@@ -231,7 +231,7 @@ ENVELOPE SECTION
 
     border-radius:12px;
 
-    z-index:5;
+    z-index:10;
 
 
     opacity:0;
@@ -1103,6 +1103,30 @@ ENVELOPE OPEN ANIMATION FIX
 #openBtn{
 
     position:relative;
+
+    z-index:20;
+
+}
+/* =========================
+BUTTON CLICK FIX
+========================= */
+
+.invitation-card{
+
+    pointer-events:auto;
+
+}
+
+
+#openBtn{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:15px;
+
+    width:calc(100% - 30px);
 
     z-index:20;
 
