@@ -1131,3 +1131,38 @@ BUTTON CLICK FIX
     z-index:20;
 
 }
+/* =========================
+FINAL ENVELOPE OPEN ANIMATION
+========================= */
+
+
+.envelope{
+    perspective:1000px;
+}
+
+
+.envelope-flap{
+
+    transform-origin:top center;
+
+    transition:1.2s ease;
+
+}
+
+
+.envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
+
+
+.envelope.open .invitation-card{
+
+    opacity:1;
+
+    transform:translateY(-220px);
+
+    transition:1.5s ease;
+
+}
