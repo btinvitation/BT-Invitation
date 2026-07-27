@@ -58,13 +58,15 @@ const envelope = document.getElementById("envelope");
 const tapText = document.querySelector(".tap-text");
 
 
-openBtn.addEventListener("click",()=>{
+openBtn.onclick = function(){
+
+    console.log("OPEN CLICKED");
 
     envelope.classList.add("open");
 
-    tapText.style.opacity="0";
+    tapText.style.opacity = "0";
 
-});
+};
 
 
 /* =========================
