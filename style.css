@@ -1,1 +1,1047 @@
+/* ==========================================
+   BHUVANESHWARI ❤️ THYAGU
+   PREMIUM RECEPTION INVITATION
+   CSS PART 2A
+========================================== */
 
+
+/* =========================
+RESET
+========================= */
+
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    color:white;
+
+    overflow-x:hidden;
+
+
+    background:
+
+    linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.85)
+    ),
+
+    url("assets/images/luxury-background.jpg.PNG");
+
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-attachment:fixed;
+
+}
+
+
+
+
+
+/* =========================
+LOADER
+========================= */
+
+
+#loader{
+
+    position:fixed;
+
+    inset:0;
+
+    background:#080808;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:9999;
+
+}
+
+
+.loader-content{
+
+    text-align:center;
+
+}
+
+
+
+.loader-content h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:70px;
+
+    color:#d4af37;
+
+    line-height:1.1;
+
+}
+
+
+
+.loader-content span{
+
+    font-family:'Cinzel',serif;
+
+    font-size:45px;
+
+}
+
+
+
+.loader-content p{
+
+    margin-top:25px;
+
+    letter-spacing:5px;
+
+    font-size:14px;
+
+    color:#f5d77a;
+
+}
+
+
+
+
+
+
+
+/* =========================
+ENVELOPE SECTION
+========================= */
+
+
+#landing{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.envelope-container{
+
+    text-align:center;
+
+}
+
+
+
+.envelope{
+
+    width:360px;
+
+    height:250px;
+
+    position:relative;
+
+    perspective:1200px;
+
+}
+
+
+
+
+
+
+/* BACK */
+
+
+.envelope-back{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #b8860b,
+        #d4af37,
+        #8b6508
+    );
+
+
+    border-radius:12px;
+
+    box-shadow:
+
+    0 30px 80px rgba(0,0,0,0.8);
+
+}
+
+
+
+
+
+
+
+/* INVITATION CARD */
+
+
+.invitation-card{
+
+    position:absolute;
+
+    width:300px;
+
+    height:420px;
+
+    background:white;
+
+    left:30px;
+
+    top:20px;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    z-index:2;
+
+
+    opacity:0;
+
+    transform:translateY(80px);
+
+    transition:1.5s ease;
+
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,0.5);
+
+}
+
+
+
+.invitation-card img{
+
+    width:100%;
+
+    height:310px;
+
+    object-fit:cover;
+
+    border-radius:8px;
+
+}
+
+
+
+
+
+#openBtn{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#d4af37;
+
+    color:#111;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+
+/* ENVELOPE FRONT */
+
+.envelope-left{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    border-style:solid;
+
+    border-width:125px 180px 0 0;
+
+    border-color:#c49a2c transparent transparent transparent;
+
+    z-index:3;
+
+}
+
+
+
+.envelope-right{
+
+    position:absolute;
+
+    bottom:0;
+
+    right:0;
+
+    border-style:solid;
+
+    border-width:125px 0 0 180px;
+
+    border-color:#c49a2c transparent transparent transparent;
+
+    z-index:3;
+
+}
+
+
+
+.envelope-bottom{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    border-style:solid;
+
+    border-width:0 180px 130px 180px;
+
+    border-color:transparent transparent #d4af37 transparent;
+
+    z-index:4;
+
+}
+
+
+
+
+
+
+/* FLAP */
+
+
+.envelope-flap{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:0;
+
+    height:0;
+
+    border-left:180px solid transparent;
+
+    border-right:180px solid transparent;
+
+    border-top:130px solid #e8c04a;
+
+    transform-origin:top;
+
+    transition:1.2s;
+
+    z-index:5;
+
+}
+
+
+
+.seal{
+
+    position:absolute;
+
+    top:-105px;
+
+    left:-28px;
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    background:#8b0000;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+}
+
+
+
+.tap-text{
+
+    margin-top:45px;
+
+    color:#d4af37;
+
+    letter-spacing:4px;
+
+    font-size:18px;
+
+}
+
+
+
+.scroll-arrow{
+
+    margin-top:60px;
+
+    font-size:35px;
+
+    color:#d4af37;
+
+    animation:bounce 1.5s infinite;
+
+}
+
+
+
+@keyframes bounce{
+
+    50%{
+
+        transform:translateY(15px);
+
+    }
+
+}
+
+/* =========================
+STORY SECTION
+========================= */
+
+
+#story{
+
+    min-height:80vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:80px 20px;
+
+    text-align:center;
+
+}
+
+
+
+.story-container{
+
+    max-width:800px;
+
+    background:rgba(0,0,0,0.45);
+
+    padding:50px;
+
+    border-radius:25px;
+
+    border:1px solid rgba(212,175,55,0.5);
+
+}
+
+
+
+.story-container h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:70px;
+
+    color:#d4af37;
+
+}
+
+
+
+.story-container h2{
+
+    margin:30px 0;
+
+    font-family:'Cinzel',serif;
+
+    color:#f5d77a;
+
+}
+
+
+
+.story-container p{
+
+    line-height:2;
+
+    color:#eee;
+
+}
+
+
+
+
+
+/* =========================
+SCRATCH SECTION
+========================= */
+
+
+#scratch-section{
+
+    min-height:80vh;
+
+    padding:80px 20px;
+
+    text-align:center;
+
+}
+
+
+
+#scratch-section h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:65px;
+
+    color:#d4af37;
+
+}
+
+
+
+#scratch-section p{
+
+    margin:20px;
+
+}
+
+
+
+
+
+.scratch-container{
+
+    position:relative;
+
+    width:350px;
+
+    height:300px;
+
+    margin:40px auto;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    border:2px solid #d4af37;
+
+}
+
+
+
+
+
+.hidden-details{
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #111,
+        #2b1c05
+    );
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.hidden-details h2{
+
+    color:#d4af37;
+
+    font-family:'Cinzel',serif;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.hidden-details p{
+
+    line-height:1.8;
+
+}
+
+
+
+
+
+.scratch-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        135deg,
+        #777,
+        #aaa
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:30px;
+
+    font-weight:600;
+
+    color:#222;
+
+    cursor:pointer;
+
+}
+
+
+
+
+
+/* =========================
+COUNTDOWN
+========================= */
+
+
+#countdown-section{
+
+    padding:100px 20px;
+
+    text-align:center;
+
+}
+
+
+
+#countdown-section h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:65px;
+
+    color:#d4af37;
+
+}
+
+
+
+.countdown{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:25px;
+
+    flex-wrap:wrap;
+
+    margin-top:50px;
+
+}
+
+
+
+.countdown div{
+
+    width:120px;
+
+    height:120px;
+
+    background:rgba(0,0,0,0.6);
+
+    border:1px solid #d4af37;
+
+    border-radius:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.countdown span{
+
+    font-size:40px;
+
+    color:#d4af37;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/* =========================
+LOCATION
+========================= */
+
+
+#location-section{
+
+    padding:80px 20px;
+
+    text-align:center;
+
+}
+
+
+
+#location-section h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:65px;
+
+    color:#d4af37;
+
+}
+
+
+
+.map-button{
+
+    display:inline-block;
+
+    margin-top:30px;
+
+    padding:15px 35px;
+
+    background:#d4af37;
+
+    color:#111;
+
+    text-decoration:none;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+}
+/* =========================
+GALLERY SECTION
+========================= */
+
+
+#gallery-section{
+
+    padding:100px 20px;
+
+    text-align:center;
+
+}
+
+
+
+#gallery-section h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:65px;
+
+    color:#d4af37;
+
+}
+
+
+
+.gallery{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:40px;
+
+    flex-wrap:wrap;
+
+    margin-top:50px;
+
+}
+
+
+
+.gallery img{
+
+    width:300px;
+
+    height:380px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    border:2px solid #d4af37;
+
+    box-shadow:
+
+    0 20px 50px rgba(0,0,0,0.6);
+
+    transition:0.5s;
+
+}
+
+
+
+.gallery img:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+
+
+
+
+/* =========================
+CLOSING SECTION
+========================= */
+
+
+#closing-section{
+
+    min-height:70vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-direction:column;
+
+    text-align:center;
+
+    padding:50px 20px;
+
+}
+
+
+
+#closing-section h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:80px;
+
+    color:#d4af37;
+
+}
+
+
+
+#closing-section h2{
+
+    font-family:'Cinzel',serif;
+
+    margin:25px 0;
+
+    color:#f5d77a;
+
+}
+
+
+
+#closing-section p{
+
+    color:#ddd;
+
+}
+
+
+
+
+
+
+
+/* =========================
+MOBILE RESPONSIVE
+========================= */
+
+
+@media(max-width:600px){
+
+
+
+.loader-content h1{
+
+    font-size:45px;
+
+}
+
+
+
+.envelope{
+
+    transform:scale(0.85);
+
+}
+
+
+
+.invitation-card{
+
+    width:270px;
+
+    height:390px;
+
+    left:45px;
+
+}
+
+
+
+.story-container{
+
+    padding:30px 20px;
+
+}
+
+
+
+.story-container h1,
+
+#scratch-section h1,
+
+#countdown-section h1,
+
+#location-section h1,
+
+#gallery-section h1{
+
+    font-size:45px;
+
+}
+
+
+
+.countdown{
+
+    gap:15px;
+
+}
+
+
+
+.countdown div{
+
+    width:90px;
+
+    height:90px;
+
+}
+
+
+
+.countdown span{
+
+    font-size:30px;
+
+}
+
+
+
+.gallery img{
+
+    width:260px;
+
+    height:330px;
+
+}
+
+
+
+#closing-section h1{
+
+    font-size:55px;
+
+}
+
+
+
+}
