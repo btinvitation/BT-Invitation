@@ -1100,3 +1100,10 @@ ENVELOPE OPEN ANIMATION FIX
     transform:rotateX(180deg);
 
 }
+#openBtn{
+
+    position:relative;
+
+    z-index:20;
+
+}
