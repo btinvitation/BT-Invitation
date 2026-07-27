@@ -1064,3 +1064,21 @@ ENVELOPE OPEN ACTION
     transform:rotateX(180deg);
 
 }
+/* =========================
+FINAL ENVELOPE OPEN FIX
+========================= */
+
+.envelope.open .invitation-card{
+
+    opacity:1;
+
+    transform:translateY(-180px);
+
+}
+
+
+.envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
