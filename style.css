@@ -1172,41 +1172,41 @@ FINAL ENVELOPE OPEN ANIMATION
 
 .wax-seal{
 
-position:absolute;
+    position:absolute;
 
-left:50%;
+    left:50%;
 
-top:58px;
+    top:95px;
 
-transform:translateX(-50%);
+    transform:translate(-50%, -50%);
 
-width:72px;
+    width:60px;
 
-height:72px;
+    height:60px;
 
-border-radius:50%;
+    border-radius:50%;
 
-background:radial-gradient(circle,#b40000,#7b0000);
+    background:radial-gradient(circle,#b40000,#7b0000);
 
-display:flex;
+    display:flex;
 
-justify-content:center;
+    justify-content:center;
 
-align-items:center;
+    align-items:center;
 
-font-size:30px;
+    font-size:26px;
 
-cursor:pointer;
+    cursor:pointer;
 
-z-index:100;
+    z-index:10;
 
-box-shadow:
-0 10px 25px rgba(0,0,0,.45),
-inset 0 3px 6px rgba(255,255,255,.25);
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.45),
+        inset 0 3px 6px rgba(255,255,255,.25);
 
-transition:
-transform .35s ease,
-opacity .35s ease;
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
 }
 
 .wax-seal:hover{
