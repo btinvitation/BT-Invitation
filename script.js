@@ -52,21 +52,28 @@ window.addEventListener("load",()=>{
 ========================= */
 
 const openBtn = document.getElementById("openBtn");
-
 const envelope = document.getElementById("envelope");
-
 const tapText = document.querySelector(".tap-text");
 
+let opened = false;
 
-openBtn.onclick = function(){
+openBtn.addEventListener("click", () => {
 
-    console.log("OPEN CLICKED");
+    if (opened) return;
 
-    envelope.classList.add("open");
+    opened = true;
+
+    openBtn.classList.add("break");
 
     tapText.style.opacity = "0";
 
-};
+    setTimeout(() => {
+
+        envelope.classList.add("open");
+
+    }, 350);
+
+});
 
 
 /* =========================
