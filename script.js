@@ -51,7 +51,6 @@ window.addEventListener("load",()=>{
 3D ENVELOPE OPENING
 ========================= */
 
-
 const openBtn = document.getElementById("openBtn");
 
 const envelope = document.getElementById("envelope");
@@ -59,21 +58,14 @@ const envelope = document.getElementById("envelope");
 const tapText = document.querySelector(".tap-text");
 
 
-
-
-
 openBtn.addEventListener("click",()=>{
-
 
     envelope.classList.add("open");
 
-
-
     tapText.style.opacity="0";
 
-
-
 });
+
 
 /* =========================
 SCRATCH TO REVEAL
