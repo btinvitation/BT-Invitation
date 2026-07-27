@@ -231,7 +231,7 @@ ENVELOPE SECTION
 
     border-radius:12px;
 
-    z-index:2;
+    z-index:5;
 
 
     opacity:0;
@@ -308,7 +308,7 @@ ENVELOPE SECTION
 
     border-color:#c49a2c transparent transparent transparent;
 
-    z-index:3;
+    z-index:1;
 
 }
 
@@ -328,7 +328,7 @@ ENVELOPE SECTION
 
     border-color:#c49a2c transparent transparent transparent;
 
-    z-index:3;
+    z-index:1;
 
 }
 
@@ -348,7 +348,7 @@ ENVELOPE SECTION
 
     border-color:transparent transparent #d4af37 transparent;
 
-    z-index:4;
+    z-index:1;
 
 }
 
