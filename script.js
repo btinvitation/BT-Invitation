@@ -1,3 +1,4 @@
+alert("JS is working");
 /* ==========================================
    BHUVANESHWARI ❤️ THYAGU
    PREMIUM RECEPTION INVITATION
