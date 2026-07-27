@@ -1045,3 +1045,22 @@ MOBILE RESPONSIVE
 
 
 }
+
+/* =========================
+ENVELOPE OPEN ACTION
+========================= */
+
+.envelope.open .invitation-card{
+
+    opacity:1;
+
+    transform:translateY(-170px);
+
+}
+
+
+.envelope.open .envelope-flap{
+
+    transform:rotateX(180deg);
+
+}
