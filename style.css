@@ -1064,8 +1064,9 @@ ENVELOPE OPEN ACTION
     transform:rotateX(180deg);
 
 }
+
 /* =========================
-FINAL ENVELOPE OPEN FIX
+ENVELOPE OPEN ANIMATION FIX
 ========================= */
 
 .envelope.open .invitation-card{
