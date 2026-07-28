@@ -44,20 +44,29 @@ openBtn.addEventListener("click", () => {
 
     opened = true;
 
-    /* Break Wax Seal */
     openBtn.classList.add("break");
 
-    /* Hide Tap Text */
     if (tapText) {
+
         tapText.style.opacity = "0";
+
     }
 
-    /* Open Envelope */
     setTimeout(() => {
 
         envelope.classList.add("open");
 
     }, 350);
+
+    setTimeout(() => {
+
+        document.getElementById("story").scrollIntoView({
+
+            behavior:"smooth"
+
+        });
+
+    },2500);
 
 });
 /* =========================
@@ -161,27 +170,7 @@ if (scrollArrow) {
 }
 
 
-/* =========================
-AUTO SCROLL AFTER OPENING
-========================= */
 
-if (openBtn) {
-
-    openBtn.addEventListener("click", () => {
-
-        setTimeout(() => {
-
-            document.getElementById("story").scrollIntoView({
-
-                behavior: "smooth"
-
-            });
-
-        }, 2500);
-
-    });
-
-}
 
 
 /* =========================
