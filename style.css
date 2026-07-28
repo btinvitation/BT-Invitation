@@ -1,11 +1,10 @@
 /* ==========================================
    BHUVANESHWARI ❤️ THYAGU
    PREMIUM RECEPTION INVITATION
+   PART 1
 ========================================== */
 
-/* =========================
-RESET
-========================= */
+/* RESET */
 
 *{
 margin:0;
@@ -22,36 +21,35 @@ body{
 font-family:'Poppins',sans-serif;
 
 background:
-linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.82)),
+linear-gradient(
+rgba(0,0,0,.55),
+rgba(0,0,0,.80)
+),
 url("assets/images/luxury-background.jpg.PNG");
 
 background-size:cover;
 background-position:center;
 background-attachment:fixed;
 
-color:#fff;
+color:#ffffff;
 
 overflow-x:hidden;
 
 }
 
-
-/* =========================
+/* ==========================
 LOADER
-========================= */
+========================== */
 
 #loader{
 
 position:fixed;
-
 inset:0;
 
-background:#080808;
+background:#090909;
 
 display:flex;
-
 justify-content:center;
-
 align-items:center;
 
 z-index:9999;
@@ -69,37 +67,34 @@ text-align:center;
 .loader-content h1{
 
 font-family:'Great Vibes',cursive;
-
-font-size:72px;
-
+font-size:70px;
 color:#d4af37;
-
-line-height:1.1;
+line-height:1.2;
 
 }
 
 .loader-content span{
 
-font-size:45px;
-
 font-family:'Cinzel',serif;
+font-size:40px;
 
 }
 
 .loader-content p{
 
-margin-top:20px;
+margin-top:18px;
 
-letter-spacing:4px;
+letter-spacing:5px;
 
-color:#f6dd87;
+font-size:15px;
+
+color:#f5d77a;
 
 }
 
-
-/* =========================
+/* ==========================
 LANDING
-========================= */
+========================== */
 
 #landing{
 
@@ -121,392 +116,23 @@ position:relative;
 
 }
 
-
-/* =========================
-TAP TEXT
-========================= */
-
 .tap-text{
 
 font-size:20px;
 
-letter-spacing:5px;
+letter-spacing:4px;
 
 color:#d4af37;
 
-margin-bottom:30px;
-
-transition:.5s;
+margin-bottom:35px;
 
 }
-
-
-/* =========================
-ENVELOPE
-========================= */
-
-.envelope{
-
-position:relative;
-
-width:360px;
-
-height:250px;
-
-margin:auto;
-
-}
-
-
-/* =========================
-BACK
-========================= */
-
-.envelope-back{
-
-position:absolute;
-
-inset:0;
-
-border-radius:14px;
-
-overflow:hidden;
-
-background:linear-gradient(
-135deg,
-#a36d06,
-#d4af37,
-#f5de87,
-#c38f15
-);
-
-box-shadow:
-0 30px 70px rgba(0,0,0,.55);
-
-}
-
-
-/* Moving Gold Shine */
-
-.envelope-back::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-120%;
-
-width:45%;
-
-height:100%;
-
-background:
-
-linear-gradient(
-
-90deg,
-
-transparent,
-
-rgba(255,255,255,.45),
-
-transparent
-
-);
-
-transform:skewX(-25deg);
-
-animation:shine 4s linear infinite;
-
-}
-
-@keyframes shine{
-
-0%{
-
-left:-120%;
-
-}
-
-100%{
-
-left:180%;
-
-}
-
-}
-
-
-/* =========================
-INVITATION CARD
-========================= */
-
-.invitation-card{
-
-position:absolute;
-
-left:30px;
-
-top:20px;
-
-width:300px;
-
-height:420px;
-
-padding:12px;
-
-background:#fff;
-
-border-radius:15px;
-
-opacity:0;
-
-transform:translateY(80px);
-
-transition:
-
-transform 1.5s ease,
-
-opacity 1.5s ease;
-
-z-index:2;
-
-box-shadow:
-
-0 35px 80px rgba(0,0,0,.45),
-
-0 0 25px rgba(212,175,55,.25);
-
-}
-
-.invitation-card img{
-
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-
-border-radius:10px;
-
-}
-
-
-/* =========================
-LEFT
-========================= */
-
-.envelope-left{
-
-position:absolute;
-
-bottom:0;
-
-left:0;
-
-width:0;
-
-height:0;
-
-border-style:solid;
-
-border-width:125px 180px 0 0;
-
-border-color:#c3911b transparent transparent transparent;
-
-z-index:8;
-
-}
-
-
-/* =========================
-RIGHT
-========================= */
-
-.envelope-right{
-
-position:absolute;
-
-bottom:0;
-
-right:0;
-
-width:0;
-
-height:0;
-
-border-style:solid;
-
-border-width:125px 0 0 180px;
-
-border-color:#c3911b transparent transparent transparent;
-
-z-index:8;
-
-}
-
-
-/* =========================
-BOTTOM
-========================= */
-
-.envelope-bottom{
-
-position:absolute;
-
-bottom:0;
-
-left:0;
-
-width:100%;
-
-height:130px;
-
-background:#d4af37;
-
-clip-path:polygon(0 0,50% 100%,100% 0,100% 100%,0 100%);
-
-z-index:9;
-
-}
-
-
-/* =========================
-TOP FLAP
-========================= */
-
-.envelope-flap{
-
-position:absolute;
-
-top:0;
-
-left:0;
-
-width:0;
-
-height:0;
-
-border-left:180px solid transparent;
-
-border-right:180px solid transparent;
-
-border-top:130px solid #ecc65a;
-
-transform-origin:top;
-
-transition:1.2s ease;
-
-z-index:20;
-
-}
-
-
-/* =========================
-WAX SEAL
-========================= */
-
-.wax-seal{
-
-position:absolute;
-
-left:50%;
-
-top:118px;
-
-transform:translate(-50%,-50%);
-
-width:65px;
-
-height:65px;
-
-border-radius:50%;
-
-background:
-
-radial-gradient(circle,#b30000,#6b0000);
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:28px;
-
-cursor:pointer;
-
-user-select:none;
-
-z-index:30;
-
-box-shadow:
-
-0 10px 25px rgba(0,0,0,.45),
-
-inset 0 3px 6px rgba(255,255,255,.25);
-
-transition:.35s;
-
-}
-
-.wax-seal:hover{
-
-transform:
-
-translate(-50%,-50%)
-
-scale(1.08);
-
-}
-
-.wax-seal.break{
-
-opacity:0;
-
-transform:
-
-translate(-50%,-50%)
-
-scale(1.45)
-
-rotate(20deg);
-
-}
-
-
-/* =========================
-OPEN
-========================= */
-
-.envelope.open .envelope-flap{
-
-transform:rotateX(180deg);
-
-}
-
-.envelope.open .invitation-card{
-
-opacity:1;
-
-transform:translateY(-250px);
-
-z-index:50;
-
-}
-
-
-/* =========================
-SCROLL ARROW
-========================= */
 
 .scroll-arrow{
 
-margin-top:70px;
+margin-top:55px;
 
-font-size:40px;
+font-size:38px;
 
 color:#d4af37;
 
@@ -524,412 +150,239 @@ transform:translateY(15px);
 
 }
 /* ==========================================
-   STORY SECTION
+   PART 2
+   ENVELOPE
 ========================================== */
 
-#story{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:100px 20px;
-}
+.envelope{
 
-.story-container{
-    max-width:850px;
-    background:rgba(0,0,0,.45);
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(212,175,55,.35);
-    border-radius:25px;
-    padding:60px 40px;
-    text-align:center;
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
-}
+position:relative;
 
-.story-container h1{
-    font-family:'Great Vibes',cursive;
-    font-size:72px;
-    color:#d4af37;
-    margin-bottom:20px;
-}
+width:360px;
+height:250px;
 
-.story-container h2{
-    font-family:'Cinzel',serif;
-    color:#f5dc8b;
-    margin-bottom:25px;
-}
-
-.story-container p{
-    line-height:2;
-    color:#ececec;
-    font-size:17px;
-}
-
-/* ==========================================
-   SCRATCH SECTION
-========================================== */
-
-#scratch-section{
-    min-height:100vh;
-    padding:100px 20px;
-    text-align:center;
-}
-
-#scratch-section h1{
-    font-family:'Great Vibes',cursive;
-    font-size:70px;
-    color:#d4af37;
-}
-
-#scratch-section p{
-    margin-top:15px;
-    color:#ddd;
-}
-
-.scratch-container{
-    width:350px;
-    height:300px;
-    margin:50px auto;
-    position:relative;
-    overflow:hidden;
-    border-radius:20px;
-    border:2px solid #d4af37;
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
-}
-
-.hidden-details{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#171717,#3a2707);
-    color:#fff;
-}
-
-.hidden-details h2{
-    font-family:'Cinzel',serif;
-    color:#d4af37;
-    margin-bottom:20px;
-}
-
-.hidden-details p{
-    line-height:1.8;
-}
-
-.scratch-overlay{
-    position:absolute;
-    inset:0;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    background:linear-gradient(135deg,#999,#d8d8d8);
-    color:#222;
-    font-size:28px;
-    font-weight:600;
-    cursor:pointer;
-    transition:opacity .8s ease;
-}
-
-/* ==========================================
-   COUNTDOWN
-========================================== */
-
-#countdown-section{
-    padding:100px 20px;
-    text-align:center;
-}
-
-#countdown-section h1{
-    font-family:'Great Vibes',cursive;
-    font-size:70px;
-    color:#d4af37;
-}
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:25px;
-    margin-top:50px;
-}
-
-.countdown div{
-    width:120px;
-    height:120px;
-    background:rgba(0,0,0,.45);
-    border:1px solid #d4af37;
-    border-radius:20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-
-.countdown span{
-    font-size:40px;
-    font-weight:bold;
-    color:#d4af37;
-}
-
-.countdown p{
-    margin-top:8px;
-    color:#eee;
-}
-
-/* ==========================================
-   LOCATION SECTION
-========================================== */
-
-#location-section{
-    min-height:80vh;
-    padding:100px 20px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-}
-
-#location-section h1{
-    font-family:'Great Vibes',cursive;
-    font-size:70px;
-    color:#d4af37;
-    margin-bottom:20px;
-}
-
-#location-section p{
-    color:#eee;
-    margin-bottom:35px;
-    max-width:650px;
-    line-height:1.8;
-}
-
-.map-button{
-    display:inline-block;
-    padding:16px 38px;
-    background:#d4af37;
-    color:#111;
-    text-decoration:none;
-    font-weight:600;
-    border-radius:40px;
-    transition:.35s;
-    box-shadow:0 12px 30px rgba(0,0,0,.35);
-}
-
-.map-button:hover{
-    transform:translateY(-4px);
-    background:#f2d46a;
-}
-
-
-/* ==========================================
-   GALLERY
-========================================== */
-
-#gallery-section{
-    padding:100px 20px;
-    text-align:center;
-}
-
-#gallery-section h1{
-    font-family:'Great Vibes',cursive;
-    font-size:70px;
-    color:#d4af37;
-    margin-bottom:50px;
-}
-
-.gallery{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
-    flex-wrap:wrap;
-}
-
-.gallery img{
-    width:300px;
-    height:390px;
-    object-fit:cover;
-    border-radius:24px;
-    border:2px solid #d4af37;
-    box-shadow:0 20px 50px rgba(0,0,0,.45);
-    transition:.4s;
-}
-
-.gallery img:hover{
-    transform:scale(1.05);
-}
-
-
-/* ==========================================
-   CLOSING
-========================================== */
-
-#closing-section{
-    min-height:70vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:60px 20px;
-}
-
-#closing-section h1{
-    font-family:'Great Vibes',cursive;
-    font-size:80px;
-    color:#d4af37;
-}
-
-#closing-section h2{
-    margin:25px 0;
-    font-family:'Cinzel',serif;
-    color:#f5dc8b;
-}
-
-#closing-section p{
-    color:#e8e8e8;
-    font-size:18px;
-}
-
-
-/* ==========================================
-   MOBILE
-========================================== */
-
-@media(max-width:768px){
-
-    .loader-content h1{
-        font-size:50px;
-    }
-
-    .tap-text{
-        font-size:17px;
-    }
-
-    .envelope{
-        transform:scale(.88);
-    }
-
-    .story-container{
-        padding:35px 25px;
-    }
-
-    .story-container h1,
-    #scratch-section h1,
-    #countdown-section h1,
-    #location-section h1,
-    #gallery-section h1{
-        font-size:48px;
-    }
-
-    .countdown{
-        gap:15px;
-    }
-
-    .countdown div{
-        width:90px;
-        height:90px;
-    }
-
-    .countdown span{
-        font-size:30px;
-    }
-
-    .gallery img{
-        width:260px;
-        height:340px;
-    }
-
-    #closing-section h1{
-        font-size:56px;
-    }
+margin:auto;
 
 }
-/* ==========================================
-   FINAL PREMIUM ANIMATIONS
-========================================== */
 
-/* Fade in sections */
-section{
-    opacity:0;
-    transform:translateY(60px);
-    transition:all 1s ease;
+/* ==========================
+BACK
+========================== */
+
+.envelope-back{
+
+position:absolute;
+
+inset:0;
+
+background:linear-gradient(
+135deg,
+#b8860b,
+#d4af37,
+#9a7305
+);
+
+border-radius:10px;
+
+box-shadow:
+0 25px 60px rgba(0,0,0,.45);
+
+z-index:1;
+
 }
 
-/* Smooth scrolling */
-html{
-    scroll-behavior:smooth;
+/* ==========================
+INVITATION CARD
+========================== */
+
+.invitation-card{
+
+position:absolute;
+
+left:30px;
+top:20px;
+
+width:300px;
+height:420px;
+
+background:#ffffff;
+
+padding:10px;
+
+border-radius:14px;
+
+box-shadow:
+0 20px 40px rgba(0,0,0,.35);
+
+opacity:0;
+
+transform:translateY(90px);
+
+transition:
+transform 1.4s ease,
+opacity 1.4s ease;
+
+z-index:2;
+
+overflow:hidden;
+
 }
 
-/* Premium gold glow */
-.story-container,
-.scratch-container,
-.countdown div,
-.gallery img{
-    transition:all .35s ease;
+.invitation-card img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+border-radius:10px;
+
+display:block;
+
 }
 
-.story-container:hover,
-.scratch-container:hover{
-    box-shadow:0 0 30px rgba(212,175,55,.25);
+/* ==========================
+LEFT
+========================== */
+
+.envelope-left{
+
+position:absolute;
+
+left:0;
+bottom:0;
+
+width:0;
+height:0;
+
+border-top:125px solid transparent;
+border-bottom:125px solid transparent;
+border-left:180px solid #c79d24;
+
+z-index:4;
+
 }
 
-.gallery img:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 35px rgba(212,175,55,.35);
+/* ==========================
+RIGHT
+========================== */
+
+.envelope-right{
+
+position:absolute;
+
+right:0;
+bottom:0;
+
+width:0;
+height:0;
+
+border-top:125px solid transparent;
+border-bottom:125px solid transparent;
+border-right:180px solid #c79d24;
+
+z-index:4;
+
 }
 
-.countdown div:hover{
-    transform:translateY(-8px);
-    border-color:#f5dc8b;
-}
+/* ==========================
+BOTTOM
+========================== */
 
-/* Button hover */
-.map-button:hover{
-    box-shadow:0 15px 35px rgba(212,175,55,.35);
-}
-
-/* Hide tap text after opening */
-.envelope.open + .tap-text,
-.envelope.open ~ .tap-text{
-    opacity:0;
-}
-
-/* Invitation always above envelope after opening */
-.envelope.open .invitation-card{
-    z-index:100;
-}
-
-/* Envelope front stays below card */
-.envelope-left,
-.envelope-right,
 .envelope-bottom{
-    z-index:30;
+
+position:absolute;
+
+left:0;
+bottom:0;
+
+width:100%;
+height:130px;
+
+background:#d4af37;
+
+border-radius:0 0 10px 10px;
+
+z-index:5;
+
 }
+
+/* ==========================
+TOP FLAP
+========================== */
 
 .envelope-flap{
-    z-index:40;
+
+position:absolute;
+
+top:0;
+left:0;
+
+width:0;
+height:0;
+
+border-left:180px solid transparent;
+border-right:180px solid transparent;
+border-top:130px solid #e8c04a;
+
+transform-origin:top center;
+
+transition:1.2s ease;
+
+z-index:6;
+
 }
 
-/* Luxury scrollbar */
+/* ==========================
+WAX SEAL
+========================== */
 
-::-webkit-scrollbar{
-    width:8px;
+.wax-seal{
+
+position:absolute;
+
+left:50%;
+top:118px;
+
+transform:translate(-50%,-50%);
+
+width:60px;
+height:60px;
+
+border-radius:50%;
+
+background:
+radial-gradient(circle,#b30000,#720000);
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:26px;
+
+cursor:pointer;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.45),
+inset 0 3px 5px rgba(255,255,255,.25);
+
+transition:.4s;
+
+z-index:10;
+
+user-select:none;
+
 }
 
-::-webkit-scrollbar-track{
-    background:#111;
-}
+.wax-seal.break{
 
-::-webkit-scrollbar-thumb{
-    background:#d4af37;
-    border-radius:20px;
-}
+transform:
+translate(-50%,-50%)
+scale(1.4)
+rotate(20deg);
 
-::-webkit-scrollbar-thumb:hover{
-    background:#f5dc8b;
+opacity:0;
+
+pointer-events:none;
+
 }
