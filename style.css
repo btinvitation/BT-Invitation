@@ -523,3 +523,413 @@ transform:translateY(15px);
 }
 
 }
+/* ==========================================
+   STORY SECTION
+========================================== */
+
+#story{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:100px 20px;
+}
+
+.story-container{
+    max-width:850px;
+    background:rgba(0,0,0,.45);
+    backdrop-filter:blur(10px);
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:25px;
+    padding:60px 40px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.story-container h1{
+    font-family:'Great Vibes',cursive;
+    font-size:72px;
+    color:#d4af37;
+    margin-bottom:20px;
+}
+
+.story-container h2{
+    font-family:'Cinzel',serif;
+    color:#f5dc8b;
+    margin-bottom:25px;
+}
+
+.story-container p{
+    line-height:2;
+    color:#ececec;
+    font-size:17px;
+}
+
+/* ==========================================
+   SCRATCH SECTION
+========================================== */
+
+#scratch-section{
+    min-height:100vh;
+    padding:100px 20px;
+    text-align:center;
+}
+
+#scratch-section h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#d4af37;
+}
+
+#scratch-section p{
+    margin-top:15px;
+    color:#ddd;
+}
+
+.scratch-container{
+    width:350px;
+    height:300px;
+    margin:50px auto;
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    border:2px solid #d4af37;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+}
+
+.hidden-details{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#171717,#3a2707);
+    color:#fff;
+}
+
+.hidden-details h2{
+    font-family:'Cinzel',serif;
+    color:#d4af37;
+    margin-bottom:20px;
+}
+
+.hidden-details p{
+    line-height:1.8;
+}
+
+.scratch-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#999,#d8d8d8);
+    color:#222;
+    font-size:28px;
+    font-weight:600;
+    cursor:pointer;
+    transition:opacity .8s ease;
+}
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+#countdown-section{
+    padding:100px 20px;
+    text-align:center;
+}
+
+#countdown-section h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#d4af37;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    margin-top:50px;
+}
+
+.countdown div{
+    width:120px;
+    height:120px;
+    background:rgba(0,0,0,.45);
+    border:1px solid #d4af37;
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.countdown span{
+    font-size:40px;
+    font-weight:bold;
+    color:#d4af37;
+}
+
+.countdown p{
+    margin-top:8px;
+    color:#eee;
+}
+
+/* ==========================================
+   LOCATION SECTION
+========================================== */
+
+#location-section{
+    min-height:80vh;
+    padding:100px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+#location-section h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#d4af37;
+    margin-bottom:20px;
+}
+
+#location-section p{
+    color:#eee;
+    margin-bottom:35px;
+    max-width:650px;
+    line-height:1.8;
+}
+
+.map-button{
+    display:inline-block;
+    padding:16px 38px;
+    background:#d4af37;
+    color:#111;
+    text-decoration:none;
+    font-weight:600;
+    border-radius:40px;
+    transition:.35s;
+    box-shadow:0 12px 30px rgba(0,0,0,.35);
+}
+
+.map-button:hover{
+    transform:translateY(-4px);
+    background:#f2d46a;
+}
+
+
+/* ==========================================
+   GALLERY
+========================================== */
+
+#gallery-section{
+    padding:100px 20px;
+    text-align:center;
+}
+
+#gallery-section h1{
+    font-family:'Great Vibes',cursive;
+    font-size:70px;
+    color:#d4af37;
+    margin-bottom:50px;
+}
+
+.gallery{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:40px;
+    flex-wrap:wrap;
+}
+
+.gallery img{
+    width:300px;
+    height:390px;
+    object-fit:cover;
+    border-radius:24px;
+    border:2px solid #d4af37;
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+    transition:.4s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+
+/* ==========================================
+   CLOSING
+========================================== */
+
+#closing-section{
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px;
+}
+
+#closing-section h1{
+    font-family:'Great Vibes',cursive;
+    font-size:80px;
+    color:#d4af37;
+}
+
+#closing-section h2{
+    margin:25px 0;
+    font-family:'Cinzel',serif;
+    color:#f5dc8b;
+}
+
+#closing-section p{
+    color:#e8e8e8;
+    font-size:18px;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+    .loader-content h1{
+        font-size:50px;
+    }
+
+    .tap-text{
+        font-size:17px;
+    }
+
+    .envelope{
+        transform:scale(.88);
+    }
+
+    .story-container{
+        padding:35px 25px;
+    }
+
+    .story-container h1,
+    #scratch-section h1,
+    #countdown-section h1,
+    #location-section h1,
+    #gallery-section h1{
+        font-size:48px;
+    }
+
+    .countdown{
+        gap:15px;
+    }
+
+    .countdown div{
+        width:90px;
+        height:90px;
+    }
+
+    .countdown span{
+        font-size:30px;
+    }
+
+    .gallery img{
+        width:260px;
+        height:340px;
+    }
+
+    #closing-section h1{
+        font-size:56px;
+    }
+
+}
+/* ==========================================
+   FINAL PREMIUM ANIMATIONS
+========================================== */
+
+/* Fade in sections */
+section{
+    opacity:0;
+    transform:translateY(60px);
+    transition:all 1s ease;
+}
+
+/* Smooth scrolling */
+html{
+    scroll-behavior:smooth;
+}
+
+/* Premium gold glow */
+.story-container,
+.scratch-container,
+.countdown div,
+.gallery img{
+    transition:all .35s ease;
+}
+
+.story-container:hover,
+.scratch-container:hover{
+    box-shadow:0 0 30px rgba(212,175,55,.25);
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 35px rgba(212,175,55,.35);
+}
+
+.countdown div:hover{
+    transform:translateY(-8px);
+    border-color:#f5dc8b;
+}
+
+/* Button hover */
+.map-button:hover{
+    box-shadow:0 15px 35px rgba(212,175,55,.35);
+}
+
+/* Hide tap text after opening */
+.envelope.open + .tap-text,
+.envelope.open ~ .tap-text{
+    opacity:0;
+}
+
+/* Invitation always above envelope after opening */
+.envelope.open .invitation-card{
+    z-index:100;
+}
+
+/* Envelope front stays below card */
+.envelope-left,
+.envelope-right,
+.envelope-bottom{
+    z-index:30;
+}
+
+.envelope-flap{
+    z-index:40;
+}
+
+/* Luxury scrollbar */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#d4af37;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#f5dc8b;
+}
