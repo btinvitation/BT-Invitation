@@ -370,6 +370,8 @@ OPEN ANIMATION
 
     transform:rotateX(180deg);
 
+    z-index:1;
+
 }
 
 .envelope.open .invitation-card{
@@ -377,6 +379,8 @@ OPEN ANIMATION
     opacity:1;
 
     transform:translateY(-220px);
+
+    z-index:35;
 
 }
 
