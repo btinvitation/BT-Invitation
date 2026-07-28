@@ -386,7 +386,11 @@ PREMIUM WAX SEAL
 
     transform:
     translate(-50%,-50%)
-    scale(1.08);
+    scale(1.12);
+
+    box-shadow:
+    0 0 20px rgba(255,80,80,.45),
+    0 10px 25px rgba(0,0,0,.45);
 
 }
 
