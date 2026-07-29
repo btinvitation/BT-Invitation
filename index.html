@@ -13,53 +13,103 @@
   <style>
     :root {
       --rose-gold: #b76e79;
-      --text-main: #ffffff;
-      --glass-bg: rgba(20, 20, 20, 0.4);
-      --glass-border: rgba(255, 255, 255, 0.2);
+      --gold: #d4af37;
+      --bg-color: #fdfbfb;
+      --text-main: #4a4a4a;
+      --text-dark: #2c2c2c;
     }
 
     body, html {
       margin: 0;
       padding: 0;
-      background-color: #000;
+      background-color: var(--bg-color);
       color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* THE MAGIC: Cinematic Video Background */
-    #bg-video {
+    /* 1. THE INTERACTIVE COVER SCREEN */
+    #welcome-cover {
       position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      z-index: -2;
-      object-fit: cover;
+      inset: 0;
+      background-image: url('assets/images/luxury-background.jpg.PNG');
+      background-size: cover;
+      background-position: center;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
-    /* Dark gradient overlay so the text is easy to read over the video */
-    .video-overlay {
+    /* Dark overly so the cover text pops */
+    .cover-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .cover-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .seal-btn {
+      width: 90px;
+      height: 90px;
+      margin: 40px auto 0;
+      background: radial-gradient(circle, #e6c27a, #b8860b);
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+      transition: transform 0.3s ease;
+      animation: pulseSeal 2s infinite;
+    }
+
+    .seal-btn:active {
+      transform: scale(0.9);
+    }
+
+    @keyframes pulseSeal {
+      0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+      50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
+      100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+    }
+
+    /* 2. MAIN INVITATION STYLING */
+    .main-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
-      z-index: -1;
+      height: 100vh;
+      background: linear-gradient(135deg, #fdfbfb 0%, #f7e9e9 100%);
+      z-index: -2;
     }
 
     .container {
       max-width: 480px; 
       margin: 0 auto;
       padding-bottom: 50px;
+      /* Hidden initially until cover opens */
+      opacity: 0; 
+      visibility: hidden;
     }
 
     .section {
-      min-height: 100vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -71,24 +121,24 @@
 
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
-      color: #fff;
-      font-weight: 400;
-      text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      color: var(--rose-gold);
+      font-weight: 600;
     }
 
     .hero-title {
-      font-size: 3.2rem;
+      font-size: 3rem;
       line-height: 1.2;
       margin: 20px 0;
-      color: #fff;
+      color: var(--text-dark);
     }
 
     .subtitle {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--rose-gold);
       margin-bottom: 10px;
+      font-weight: 500;
     }
 
     .large-image {
@@ -97,22 +147,19 @@
       max-height: 60vh; 
       object-fit: contain; 
       border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      box-shadow: 0 15px 35px rgba(183, 110, 121, 0.2);
       margin-bottom: 20px;
-      border: 1px solid var(--glass-border);
     }
 
-    /* Frosted Glass Effect over the video */
     .details-box {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
       padding: 35px 25px;
       width: 100%;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
       margin-bottom: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
     /* Heart Scratch Card */
@@ -121,6 +168,7 @@
       width: 250px;
       height: 250px; 
       margin: 0 auto;
+      filter: drop-shadow(0px 10px 15px rgba(183, 110, 121, 0.3));
       -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
       -webkit-mask-size: contain;
       -webkit-mask-repeat: no-repeat;
@@ -141,42 +189,17 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.1);
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
+      background: linear-gradient(135deg, #fff, #f7e9e9);
+      color: var(--text-dark);
       padding: 20px;
       box-sizing: border-box;
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-    }
-
-    /* Timer */
-    #timer {
-      display: flex;
-      justify-content: space-around;
-      gap: 10px;
-      margin: 30px 0;
-    }
-    .time-block { 
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(10px);
-      padding: 15px;
-      border-radius: 12px;
-      min-width: 60px;
-    }
-    .time-block span {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      color: var(--rose-gold);
-      display: block;
     }
 
     .btn {
       display: inline-block;
       padding: 16px 35px;
-      background: var(--rose-gold);
+      background: linear-gradient(45deg, #b76e79, #d698a0);
       color: #fff;
       border: none;
       border-radius: 30px;
@@ -191,27 +214,32 @@
 </head>
 <body>
 
-  <!-- THE CINEMATIC BACKGROUND VIDEO -->
-  <video autoplay loop muted playsinline id="bg-video">
-    <!-- You will upload a video named background.mp4 to your assets/images folder -->
-    <source src="assets/images/background.mp4" type="video/mp4">
-  </video>
-  <div class="video-overlay"></div>
-
-  <div class="container">
-    
-    <!-- Cover Section -->
-    <div class="section" id="cover" data-aos="zoom-in" data-aos-duration="1500">
-      <p class="subtitle">We are getting married</p>
-      <h1 class="hero-title">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: var(--rose-gold);">&</span><br>Thyagu</h1>
-      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 2px;">AUGUST 30, 2026</p>
-      <div style="margin-top: 60px; animation: bounce 2s infinite;">
-        <p class="subtitle" style="font-size: 0.6rem;">Scroll to begin</p>
-        <span style="font-size: 1.5rem; color: var(--rose-gold);">↓</span>
+  <!-- 1. INTERACTIVE COVER SCREEN -->
+  <div id="welcome-cover">
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <p style="color: #fff; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase;">You are invited</p>
+      <h1 style="color: var(--gold); font-size: 3rem; margin: 10px 0;">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: #fff;">&</span><br>Thyagu</h1>
+      
+      <!-- The Golden Wax Seal -->
+      <div class="seal-btn" onclick="openInvitation()">
+        Tap to<br>Open
       </div>
     </div>
+  </div>
 
-    <!-- Invitation Section -->
+  <!-- 2. MAIN SCROLLING INVITATION -->
+  <div class="main-bg"></div>
+  
+  <!-- Wrap the rest in the container that fades in after tap -->
+  <div class="container" id="main-content">
+    
+    <div class="section" data-aos="fade-up" data-aos-duration="1500">
+      <p class="subtitle">Welcome to our beginning</p>
+      <h1 class="hero-title">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: var(--rose-gold);">&</span><br>Thyagu</h1>
+      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 1px;">AUGUST 30, 2026</p>
+    </div>
+
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
       <img src="assets/images/invitation-card.jpg.PNG" class="large-image" alt="Invitation Card">
       <div class="details-box">
@@ -220,7 +248,6 @@
       </div>
     </div>
 
-    <!-- Scratch to Reveal Section -->
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
       <h2 style="margin-bottom: 30px; font-size: 2rem;">A Secret For You</h2>
       <div class="scratch-wrapper">
@@ -232,13 +259,12 @@
       </div>
     </div>
 
-    <!-- Details Section -->
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
       <h2 style="margin-bottom: 30px; font-size: 2rem;">The Details</h2>
       <div class="details-box" style="text-align: left; border-left: 4px solid var(--rose-gold);">
         <h3 style="margin-top: 0; font-size: 1.4rem;">Wedding Ceremony</h3>
         <p style="margin: 10px 0;"><strong>Sunday, August 30, 2026</strong></p>
-        <p style="margin: 5px 0; color: var(--rose-gold);">1:30 PM — 3:00 PM</p>
+        <p style="margin: 5px 0; color: var(--rose-gold); font-weight: 600;">1:30 PM — 3:00 PM</p>
       </div>
       <div class="details-box" style="text-align: left; border-left: 4px solid var(--rose-gold);">
         <h3 style="margin-top: 0; font-size: 1.4rem;">The Venue</h3>
@@ -247,7 +273,6 @@
       </div>
     </div>
 
-    <!-- Gallery -->
     <div class="section" data-aos="zoom-in-up" data-aos-duration="1000">
       <h2 style="margin-bottom: 30px; font-size: 2rem;">Our Memories</h2>
       <img src="assets/images/photo1.jpg.PNG" class="large-image" alt="Couple Photo 1">
@@ -256,18 +281,34 @@
 
   </div>
 
-  <style>
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
-  </style>
-
   <script>
-    AOS.init();
+    // 1. Reveal Animation when Wax Seal is Tapped
+    function openInvitation() {
+      // Slide the cover screen up and fade it out
+      gsap.to("#welcome-cover", {
+        y: "-100%", 
+        opacity: 0, 
+        duration: 1.2, 
+        ease: "power3.inOut",
+        onComplete: () => {
+          document.getElementById("welcome-cover").style.display = "none";
+        }
+      });
 
-    // Heart Scratch Canvas Setup
+      // Fade in the main invitation content
+      const mainContent = document.getElementById("main-content");
+      mainContent.style.visibility = "visible";
+      gsap.to(mainContent, {
+        opacity: 1,
+        duration: 1.5,
+        delay: 0.5
+      });
+      
+      // Initialize the scroll animations after opening
+      setTimeout(() => { AOS.init(); }, 800);
+    }
+
+    // 2. Heart Scratch Canvas Setup
     const canvas = document.getElementById('scratch-canvas');
     const ctx = canvas.getContext('2d');
     
