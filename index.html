@@ -3,23 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bhuvaneshwari & Thyagu | Wedding Invitation</title>
+  <title>Bhuvaneshwari & Thyagu | Premium Wedding Invitation</title>
   
+  <!-- Animation & Particle Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles-slim@2.12.0/tsparticles.slim.bundle.min.js"></script>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --gold: #d4af37;
+      --gold-primary: #d4af37;
+      --gold-light: #f3e5ab;
+      --gold-dark: #aa7c11;
       --text-main: #e0e0e0;
       --text-dark: #ffffff;
+      --burgundy: #720000;
     }
 
     body, html {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       background-color: #000;
       color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
@@ -27,209 +32,217 @@
       scroll-behavior: smooth;
     }
 
-    /* 1. THE PERMANENT BACKGROUND IMAGE */
+    /* Floating Particles Canvas */
+    #tsparticles {
+      position: fixed;
+      inset: 0;
+      z-index: 1; /* Above background, below text */
+      pointer-events: none;
+    }
+
+    /* GLOBAL BACKGROUND IMAGE & OVERLAY */
     .global-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
+      position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
       background-image: url('assets/images/luxury-background.jpg.PNG');
-      background-size: cover;
-      background-position: center;
-      z-index: 1; /* Fixed layer issue - now it will definitely show */
+      background-size: cover; background-position: center;
+      z-index: 0; 
     }
-
-    /* Dark overlay so the text remains readable */
     .global-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5); /* Slightly lighter to show background more */
-      z-index: 2;
+      position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.7); 
+      z-index: 0;
     }
 
-    /* 2. THE INTERACTIVE COVER SCREEN */
+    /* 1. INTERACTIVE COVER SCREEN */
     #welcome-cover {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      position: fixed; inset: 0; z-index: 9999;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+      background: inherit; /* Inherits the dark overlay behind it */
     }
 
     .cover-content {
-      position: relative;
-      z-index: 10;
-      padding: 20px;
+      position: relative; z-index: 10; padding: 20px;
     }
 
+    /* Ultra-Premium 3D Wax Seal */
     .seal-btn {
-      width: 90px;
-      height: 90px;
+      width: 120px; height: 120px;
       margin: 40px auto 0;
-      background: radial-gradient(circle, #e6c27a, #b8860b);
+      background: radial-gradient(circle at 30% 30%, #a11414, #570000);
       border-radius: 50%;
-      border: 2px solid #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem;
-      font-weight: 600;
+      border: 3px solid var(--gold-dark);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column;
       cursor: pointer;
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
-      transition: transform 0.3s ease;
-      animation: pulseSeal 2s infinite;
+      box-shadow: 
+        inset 0 0 15px rgba(0,0,0,0.8), /* inner depth */
+        inset 0 0 5px rgba(255,255,255,0.2), /* rim highlight */
+        0 15px 35px rgba(212, 175, 55, 0.5); /* golden outer glow */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: pulseSeal 2.5s infinite;
+      position: relative;
+    }
+    /* Inner embossed ring */
+    .seal-btn::before {
+      content: '';
+      position: absolute;
+      width: 100px; height: 100px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      border-radius: 50%;
+    }
+    .seal-btn span.initials {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold-primary);
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    }
+    .seal-btn span.tap-text {
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-top: 5px;
     }
 
-    .seal-btn:active {
-      transform: scale(0.9);
-    }
+    .seal-btn:active { transform: scale(0.95); }
 
     @keyframes pulseSeal {
-      0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
-      50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.8); }
-      100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+      0% { box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.3); }
+      50% { box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 0 40px rgba(212, 175, 55, 0.7); }
+      100% { box-shadow: inset 0 0 15px rgba(0,0,0,0.8), 0 0 20px rgba(212, 175, 55, 0.3); }
     }
 
-    /* 3. MAIN INVITATION STYLING */
+    /* Metallic Gold Text Gradient */
+    .shimmer-text {
+      background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa7c11);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      text-shadow: 0px 4px 20px rgba(212,175,55,0.3);
+    }
+
+    /* 2. MAIN INVITATION STYLING */
     .container {
-      max-width: 480px; 
-      margin: 0 auto;
-      padding-bottom: 50px;
-      opacity: 0; 
-      visibility: hidden;
-      position: relative;
-      z-index: 10; /* Ensures content sits above the background and overlay */
+      max-width: 500px; margin: 0 auto; padding-bottom: 50px;
+      opacity: 0; visibility: hidden; position: relative; z-index: 10;
     }
 
     .section {
       min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
-      text-align: center;
-      box-sizing: border-box;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 50px 20px; text-align: center; box-sizing: border-box;
     }
 
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      color: var(--gold);
-      font-weight: 600;
-    }
+    h1, h2, h3 { font-family: 'Cinzel', serif; font-weight: 600; margin: 0; }
 
-    .hero-title {
-      font-size: 3rem;
-      line-height: 1.2;
-      margin: 20px 0;
-      color: var(--text-dark);
-      text-shadow: 0 4px 15px rgba(0,0,0,0.8);
-    }
+    .hero-title { font-size: 3.2rem; line-height: 1.2; margin: 20px 0; }
+    .hero-title span.amp { font-size: 1.8rem; color: #fff; font-family: 'Montserrat', sans-serif; font-weight: 300; }
 
     .subtitle {
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-      font-weight: 500;
+      font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold-primary); margin-bottom: 10px; font-weight: 400;
     }
 
     .large-image {
-      width: 100%;
-      height: auto; 
-      max-height: 60vh; 
-      object-fit: contain; 
-      border-radius: 12px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
-      margin-bottom: 20px;
-      border: 1px solid rgba(212, 175, 55, 0.3);
+      width: 100%; height: auto; max-height: 60vh; object-fit: contain; 
+      border-radius: 8px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+      margin-bottom: 20px; border: 2px solid rgba(212, 175, 55, 0.4);
     }
 
+    /* Premium Frosted Glass Boxes */
     .details-box {
-      background: rgba(20, 20, 20, 0.6); /* Slightly more transparent */
+      background: rgba(15, 15, 15, 0.5);
       border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 20px;
-      padding: 35px 25px;
-      width: 100%;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      margin-bottom: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border-radius: 12px;
+      padding: 40px 30px; width: 100%;
+      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+      margin-bottom: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+      position: relative; overflow: hidden;
     }
+    /* Subtle gold highlight line at top of boxes */
+    .details-box::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+    }
+
+    /* Elegant SVG Dividers */
+    .divider { margin: 30px 0; opacity: 0.7; width: 80%; max-width: 300px; }
 
     /* Heart Scratch Card */
     .scratch-wrapper {
-      position: relative;
-      width: 250px;
-      height: 250px; 
-      margin: 0 auto;
-      filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.5));
+      position: relative; width: 260px; height: 260px; margin: 0 auto 30px;
+      filter: drop-shadow(0px 15px 25px rgba(0,0,0,0.8));
       -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-      -webkit-mask-size: contain;
-      -webkit-mask-repeat: no-repeat;
-      -webkit-mask-position: center;
+      -webkit-mask-size: contain; -webkit-mask-repeat: no-repeat; -webkit-mask-position: center;
     }
-    
-    #scratch-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      cursor: pointer;
-    }
+    #scratch-canvas { position: absolute; top: 0; left: 0; cursor: pointer; }
     
     .scratch-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: rgba(20, 20, 20, 0.8);
-      border: 1px solid var(--gold);
-      color: var(--text-dark);
-      padding: 20px;
-      box-sizing: border-box;
-      font-family: 'Playfair Display', serif;
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: rgba(20, 20, 20, 0.9); border: 2px solid var(--gold-primary);
+      color: var(--gold-light); padding: 20px; box-sizing: border-box; font-family: 'Cinzel', serif;
     }
 
+    /* Countdown Timer */
+    #timer { display: flex; justify-content: space-between; gap: 8px; margin: 30px 0; width: 100%; }
+    .time-block { 
+      background: rgba(0,0,0,0.4); border: 1px solid rgba(212,175,55,0.3);
+      backdrop-filter: blur(5px); padding: 15px 10px; border-radius: 8px; flex: 1; text-align: center;
+    }
+    .time-block span { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--gold-primary); display: block; font-weight: 700; }
+    .time-block small { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-main); }
+
+    /* Luxury Button */
     .btn {
-      display: inline-block;
-      padding: 16px 35px;
-      background: linear-gradient(45deg, #b8860b, #ffd700);
-      color: #000;
-      border: none;
-      border-radius: 30px;
-      text-decoration: none;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-top: 20px;
+      display: inline-block; padding: 16px 40px;
+      background: linear-gradient(45deg, #b8860b, #ffd700, #b8860b);
+      background-size: 200% auto; color: #000; border: none; border-radius: 30px;
+      text-decoration: none; text-transform: uppercase; letter-spacing: 3px;
+      font-size: 0.8rem; font-weight: 600; margin-top: 25px;
+      box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); transition: 0.5s;
+    }
+    .btn:hover { background-position: right center; box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6); }
+
+    /* Floating Audio Button */
+    #audio-control {
+      position: fixed; bottom: 20px; right: 20px; z-index: 100;
+      width: 45px; height: 45px; background: rgba(20,20,20,0.8);
+      border: 1px solid var(--gold-primary); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold-primary); font-size: 1.2rem; cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5); display: none; /* Hidden until open */
     }
   </style>
 </head>
 <body>
 
-  <!-- GLOBAL BACKGROUND IMAGE & OVERLAY -->
+  <!-- Background Music Element (Hidden) -->
+  <!-- A beautiful free cinematic romantic track -->
+  <audio id="bg-music" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/01/20/audio_1416eefdcb.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio Control Toggle -->
+  <div id="audio-control" onclick="toggleAudio()">🎵</div>
+
+  <!-- Particles & Global BG -->
   <div class="global-bg"></div>
   <div class="global-overlay"></div>
+  <div id="tsparticles"></div>
 
   <!-- 1. INTERACTIVE COVER SCREEN -->
   <div id="welcome-cover">
     <div class="cover-content">
-      <p style="color: #fff; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase;">You are invited</p>
-      <h1 style="color: var(--gold); font-size: 3rem; margin: 10px 0;">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: #fff;">&</span><br>Thyagu</h1>
+      <p style="color: #fff; letter-spacing: 4px; font-size: 0.8rem; text-transform: uppercase; opacity: 0.8;">You are cordially invited</p>
+      <h1 class="hero-title shimmer-text" style="font-size: 2.8rem;">Bhuvaneshwari<br><span class="amp">&</span><br>Thyagu</h1>
       
-      <!-- The Golden Wax Seal -->
+      <!-- Premium 3D Wax Seal -->
       <div class="seal-btn" onclick="openInvitation()">
-        Tap to<br>Open
+        <span class="initials">B&T</span>
+        <span class="tap-text">Tap to Open</span>
       </div>
     </div>
   </div>
@@ -239,83 +252,164 @@
     
     <div class="section" data-aos="fade-up" data-aos-duration="1500">
       <p class="subtitle">Welcome to our beginning</p>
-      <h1 class="hero-title">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: var(--gold);">&</span><br>Thyagu</h1>
-      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 1px;">AUGUST 30, 2026</p>
+      <h1 class="hero-title shimmer-text">Bhuvaneshwari<br><span class="amp">&</span><br>Thyagu</h1>
+      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 2px; color: var(--gold-light);">AUGUST 30, 2026</p>
     </div>
+
+    <!-- Elegant SVG Divider -->
+    <svg class="divider" viewBox="0 0 100 10" preserveAspectRatio="none">
+      <path d="M0,5 L45,5 L50,0 L55,5 L100,5" stroke="#d4af37" stroke-width="1" fill="none"/>
+    </svg>
 
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
       <img src="assets/images/invitation-card.jpg.PNG" class="large-image" alt="Invitation Card">
       <div class="details-box">
-        <h2 style="font-size: 1.8rem;">You are Invited</h2>
-        <p style="line-height: 1.8;">We are honored to welcome you to our wedding ceremony as we begin our journey together in faith and love.</p>
+        <h2 style="font-size: 1.8rem; color: var(--gold-primary);">The Celebration</h2>
+        <p style="line-height: 1.8; color: #ddd; margin-top: 15px;">We are honored to welcome you to our wedding ceremony. Join us as we begin our journey together in faith, love, and eternal partnership.</p>
       </div>
     </div>
 
+    <svg class="divider" viewBox="0 0 100 10" preserveAspectRatio="none">
+      <path d="M0,5 L45,5 L50,0 L55,5 L100,5" stroke="#d4af37" stroke-width="1" fill="none"/>
+    </svg>
+
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
-      <h2 style="margin-bottom: 30px; font-size: 2rem;">A Secret For You</h2>
+      <h2 style="margin-bottom: 10px; font-size: 2rem; color: var(--gold-primary);">A Secret Blessing</h2>
+      <p style="margin-bottom: 30px; font-size: 0.9rem; color: #aaa;">Scratch the golden heart to reveal</p>
+      
       <div class="scratch-wrapper">
         <div class="scratch-content">
           <span style="font-size: 1rem; font-family: 'Montserrat', sans-serif;">You're Invited!</span>
-          <br><br>August 30, 2026
+          <br><br>August 30, 2026<br><br>
+          <span style="font-size: 0.8rem; color: #fff;">See you there!</span>
         </div>
-        <canvas id="scratch-canvas" width="250" height="250"></canvas>
+        <canvas id="scratch-canvas" width="260" height="260"></canvas>
       </div>
     </div>
 
+    <svg class="divider" viewBox="0 0 100 10" preserveAspectRatio="none">
+      <path d="M0,5 L45,5 L50,0 L55,5 L100,5" stroke="#d4af37" stroke-width="1" fill="none"/>
+    </svg>
+
+    <!-- Details & Countdown -->
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
-      <h2 style="margin-bottom: 30px; font-size: 2rem;">The Details</h2>
-      <div class="details-box" style="text-align: left; border-left: 4px solid var(--gold);">
-        <h3 style="margin-top: 0; font-size: 1.4rem;">Wedding Ceremony</h3>
-        <p style="margin: 10px 0; color: #fff;"><strong>Sunday, August 30, 2026</strong></p>
-        <p style="margin: 5px 0; color: var(--gold); font-weight: 600;">1:30 PM — 3:00 PM</p>
+      <h2 style="margin-bottom: 30px; font-size: 2rem; color: var(--gold-primary);">The Details</h2>
+      
+      <div id="timer">
+        <div class="time-block"><span id="days">00</span><small>Days</small></div>
+        <div class="time-block"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-block"><span id="mins">00</span><small>Mins</small></div>
+        <div class="time-block"><span id="secs">00</span><small>Secs</small></div>
       </div>
-      <div class="details-box" style="text-align: left; border-left: 4px solid var(--gold);">
-        <h3 style="margin-top: 0; font-size: 1.4rem;">The Venue</h3>
-        <p style="line-height: 1.6;">Groom’s House<br>Kamaraj Nagar, Paramanandal<br>Chengam</p>
-        <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn">Open Map</a>
+
+      <div class="details-box" style="text-align: left; margin-top: 30px;">
+        <h3 style="margin-top: 0; font-size: 1.4rem; color: var(--gold-light);">Wedding Ceremony</h3>
+        <p style="margin: 10px 0; color: #fff; font-size: 1.1rem;"><strong>Sunday, August 30, 2026</strong></p>
+        <p style="margin: 5px 0; color: var(--gold-primary); font-weight: 600;">1:30 PM — 3:00 PM</p>
+      </div>
+      
+      <div class="details-box" style="text-align: left;">
+        <h3 style="margin-top: 0; font-size: 1.4rem; color: var(--gold-light);">The Venue</h3>
+        <p style="line-height: 1.8; color: #ddd;">Groom’s House<br>Kamaraj Nagar, Paramanandal<br>Chengam</p>
+        <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn">Navigate to Venue</a>
       </div>
     </div>
+
+    <svg class="divider" viewBox="0 0 100 10" preserveAspectRatio="none">
+      <path d="M0,5 L45,5 L50,0 L55,5 L100,5" stroke="#d4af37" stroke-width="1" fill="none"/>
+    </svg>
 
     <div class="section" data-aos="zoom-in-up" data-aos-duration="1000">
-      <h2 style="margin-bottom: 30px; font-size: 2rem;">Our Memories</h2>
+      <h2 style="margin-bottom: 30px; font-size: 2rem; color: var(--gold-primary);">Our Memories</h2>
       <img src="assets/images/photo1.jpg.PNG" class="large-image" alt="Couple Photo 1">
       <img src="assets/images/photo2.jpg.PNG" class="large-image" alt="Couple Photo 2" style="margin-top: 15px;">
+    </div>
+    
+    <div class="section" data-aos="fade-up">
+       <h2 class="shimmer-text" style="font-size: 2.2rem; margin-bottom: 10px;">Thank You</h2>
+       <p>We can't wait to celebrate with you.</p>
     </div>
 
   </div>
 
   <script>
-    // Reveal Animation when Wax Seal is Tapped
+    // 1. Setup Golden Dust Particles
+    tsParticles.load("tsparticles", {
+      particles: {
+        number: { value: 40 },
+        color: { value: "#d4af37" },
+        shape: { type: "circle" },
+        opacity: { value: 0.5, random: true },
+        size: { value: 3, random: true },
+        move: { enable: true, speed: 0.6, direction: "top", outModes: "out" }
+      },
+      interactivity: { events: { onHover: { enable: true, mode: "bubble" } } }
+    });
+
+    // 2. Reveal Animation & Audio on Wax Seal Tap
+    const bgMusic = document.getElementById("bg-music");
+    let isPlaying = false;
+
     function openInvitation() {
+      // Play Music
+      bgMusic.play().catch(() => console.log("Audio autoplay blocked by browser"));
+      isPlaying = true;
+      document.getElementById("audio-control").style.display = "flex";
+
+      // Slide cover up
       gsap.to("#welcome-cover", {
-        y: "-100%", 
-        opacity: 0, 
-        duration: 1.2, 
-        ease: "power3.inOut",
-        onComplete: () => {
-          document.getElementById("welcome-cover").style.display = "none";
-        }
+        y: "-100%", opacity: 0, duration: 1.5, ease: "power4.inOut",
+        onComplete: () => { document.getElementById("welcome-cover").style.display = "none"; }
       });
 
+      // Fade in content
       const mainContent = document.getElementById("main-content");
       mainContent.style.visibility = "visible";
-      gsap.to(mainContent, {
-        opacity: 1,
-        duration: 1.5,
-        delay: 0.5
-      });
+      gsap.to(mainContent, { opacity: 1, duration: 1.5, delay: 0.8 });
       
-      setTimeout(() => { AOS.init(); }, 800);
+      setTimeout(() => { AOS.init(); }, 1000);
     }
 
-    // Heart Scratch Canvas Setup
+    // Toggle Audio Button
+    function toggleAudio() {
+      const btn = document.getElementById("audio-control");
+      if (isPlaying) {
+        bgMusic.pause();
+        btn.innerText = "🔇";
+        isPlaying = false;
+      } else {
+        bgMusic.play();
+        btn.innerText = "🎵";
+        isPlaying = true;
+      }
+    }
+
+    // 3. Countdown Timer (Target: August 30, 2026 13:30 IST)
+    const eventDate = new Date("Aug 30, 2026 13:30:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+      if(diff > 0) {
+        document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }
+    }, 1000);
+
+    // 4. Heart Scratch Canvas
     const canvas = document.getElementById('scratch-canvas');
     const ctx = canvas.getContext('2d');
     
-    ctx.fillStyle = '#d4af37'; // Golden scratch layer
+    // Create a golden gradient for the scratch layer
+    const gradient = ctx.createLinearGradient(0, 0, 260, 260);
+    gradient.addColorStop(0, '#bf953f'); gradient.addColorStop(0.5, '#fcf6ba'); gradient.addColorStop(1, '#b38728');
+    ctx.fillStyle = gradient; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    // Scratch prompt text
     ctx.font = '16px "Montserrat"';
-    ctx.fillStyle = '#000000';
+    ctx.fillStyle = '#443300';
     ctx.textAlign = 'center';
     ctx.fillText('Scratch Here', canvas.width / 2, canvas.height / 2 + 5);
     
