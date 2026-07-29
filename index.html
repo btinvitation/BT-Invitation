@@ -5,12 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bhuvaneshwari & Thyagu | Wedding Invitation</title>
   
+  <!-- Animation Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Soft Blush & Rose Gold Theme like the video */
       --rose-gold: #b76e79;
       --rose-light: #f7e9e9;
       --bg-color: #fdfbfb;
@@ -22,15 +25,13 @@
       margin: 0;
       padding: 0;
       background-color: var(--bg-color);
-      /* Light elegant background gradient */
-      background: linear-gradient(135deg, #fdfbfb 0%, #f7e9e9 100%);
       color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* We removed the heavy black overlay to keep it light and airy */
+    /* Fixed Background with subtle pulse animation */
     .bg-wrapper {
       position: fixed;
       top: 0;
@@ -40,18 +41,25 @@
       background-image: url('assets/images/luxury-background.jpg.PNG');
       background-size: cover;
       background-position: center;
-      opacity: 0.15; /* Makes your background image very subtle and elegant */
+      opacity: 0.15;
       z-index: -2;
+      animation: pulseBg 10s infinite alternate;
+    }
+
+    @keyframes pulseBg {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
     }
 
     .container {
       max-width: 480px; 
       margin: 0 auto;
       background: transparent;
+      padding-bottom: 50px;
     }
 
     .section {
-      min-height: 100vh;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -61,65 +69,65 @@
       box-sizing: border-box;
     }
 
-    h1, h2, h3, .fancy-font {
+    h1, h2, h3 {
       font-family: 'Playfair Display', serif;
       color: var(--rose-gold);
       font-weight: 600;
     }
 
+    /* Floating Image Effect */
     .large-image {
       width: 100%;
       height: auto; 
       max-height: 60vh; 
       object-fit: contain; 
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(183, 110, 121, 0.15);
+      border-radius: 16px;
+      box-shadow: 0 15px 35px rgba(183, 110, 121, 0.2);
       margin-bottom: 20px;
+      border: 4px solid #fff;
     }
 
     .hero-title {
-      font-size: 2.8rem;
+      font-size: 3rem;
       line-height: 1.2;
       margin: 20px 0;
       color: var(--text-dark);
+      text-shadow: 2px 2px 10px rgba(183, 110, 121, 0.2);
     }
 
     .subtitle {
       font-size: 0.85rem;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--rose-gold);
       margin-bottom: 10px;
       font-weight: 500;
     }
 
+    /* Premium Glassmorphism Cards */
     .details-box {
-      background: rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(183, 110, 121, 0.2);
-      border-radius: 16px;
-      padding: 30px 20px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      padding: 35px 25px;
       width: 100%;
-      backdrop-filter: blur(10px);
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
 
     /* HEART SHAPED SCRATCH CARD */
     .scratch-wrapper {
       position: relative;
       width: 250px;
-      height: 250px; /* Made square to keep the heart proportional */
+      height: 250px; 
       margin: 0 auto;
-      
-      /* This instantly clips the entire box into a perfect heart */
+      filter: drop-shadow(0px 10px 15px rgba(183, 110, 121, 0.3));
       -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
       -webkit-mask-size: contain;
       -webkit-mask-repeat: no-repeat;
       -webkit-mask-position: center;
-      mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
     }
     
     #scratch-canvas {
@@ -136,7 +144,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: var(--rose-light);
+      background: linear-gradient(135deg, #fff, #f7e9e9);
       color: var(--text-dark);
       padding: 20px;
       box-sizing: border-box;
@@ -147,19 +155,25 @@
     /* Timer */
     #timer {
       display: flex;
-      justify-content: center;
-      gap: 15px;
+      justify-content: space-around;
+      gap: 10px;
       margin: 30px 0;
     }
-    .time-block { text-align: center; }
+    .time-block { 
+      background: #fff;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.1);
+      min-width: 60px;
+    }
     .time-block span {
       font-family: 'Playfair Display', serif;
-      font-size: 2rem;
+      font-size: 1.8rem;
       color: var(--rose-gold);
       display: block;
     }
     .time-block small {
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: var(--text-main);
@@ -168,125 +182,97 @@
     /* Buttons */
     .btn {
       display: inline-block;
-      padding: 15px 30px;
-      background: var(--rose-gold);
+      padding: 16px 35px;
+      background: linear-gradient(45deg, #b76e79, #d698a0);
       color: #fff;
       border: none;
       border-radius: 30px;
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       font-size: 0.8rem;
+      font-weight: 600;
       transition: all 0.3s;
       margin-top: 20px;
-      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.3);
+      box-shadow: 0 8px 20px rgba(183, 110, 121, 0.4);
     }
     .btn:hover {
-      background: var(--text-dark);
-      color: #fff;
-    }
-
-    /* RSVP Form */
-    .rsvp-input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(183, 110, 121, 0.4);
-      color: var(--text-dark);
-      font-family: 'Montserrat', sans-serif;
-      box-sizing: border-box;
-    }
-    .rsvp-input:focus {
-      outline: none;
-      border-bottom: 1px solid var(--rose-gold);
-    }
-    .rsvp-input::placeholder {
-      color: #999;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(183, 110, 121, 0.6);
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Image with Light Transparency -->
+  <!-- Animated Background Image -->
   <div class="bg-wrapper"></div>
 
   <div class="container">
     
-    <!-- 1. Cover Section -->
-    <div class="section" id="cover">
+    <!-- Cover Section -->
+    <div class="section" id="cover" data-aos="zoom-in" data-aos-duration="1500">
       <p class="subtitle">We are getting married</p>
       <h1 class="hero-title">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: var(--rose-gold);">&</span><br>Thyagu</h1>
-      <p style="margin-top: 15px; font-weight: 500;">August 30, 2026</p>
-      <div style="margin-top: 50px; animation: bounce 2s infinite;">
-        <p class="subtitle" style="font-size: 0.7rem;">Scroll to open</p>
+      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 1px;">AUGUST 30, 2026</p>
+      <div style="margin-top: 60px; animation: bounce 2s infinite;">
+        <p class="subtitle" style="font-size: 0.6rem;">Scroll to begin</p>
         <span style="font-size: 1.5rem; color: var(--rose-gold);">↓</span>
       </div>
     </div>
 
-    <!-- 2. Invitation Section -->
-    <div class="section">
+    <!-- Invitation Section -->
+    <div class="section" data-aos="fade-up" data-aos-duration="1000">
       <img src="assets/images/invitation-card.jpg.PNG" class="large-image" alt="Invitation Card">
       <div class="details-box">
-        <h2 style="font-size: 1.5rem;">You are Invited!</h2>
-        <p>We are honored to welcome you to our wedding ceremony as we begin our journey together in faith and love.</p>
+        <h2 style="font-size: 1.8rem;">You are Invited</h2>
+        <p style="line-height: 1.8;">We are honored to welcome you to our wedding ceremony as we begin our journey together in faith and love.</p>
       </div>
     </div>
 
-    <!-- 3. HEART Scratch to Reveal Section -->
-    <div class="section">
-      <h2 style="margin-bottom: 30px;">Scratch to Reveal</h2>
+    <!-- Scratch to Reveal Section -->
+    <div class="section" data-aos="fade-up" data-aos-duration="1000">
+      <h2 style="margin-bottom: 30px; font-size: 2rem;">A Secret For You</h2>
       <div class="scratch-wrapper">
         <div class="scratch-content">
-          <span style="font-size: 0.9rem; font-family: 'Montserrat', sans-serif;">You're Invited!</span>
-          <br>August 30, 2026
+          <span style="font-size: 1rem; font-family: 'Montserrat', sans-serif;">You're Invited!</span>
+          <br><br>August 30, 2026
         </div>
-        <!-- Canvas matches the wrapper size -->
         <canvas id="scratch-canvas" width="250" height="250"></canvas>
       </div>
     </div>
 
-    <!-- 4. Event Timeline & Details -->
-    <div class="section">
-      <h2 style="margin-bottom: 30px;">Program Timeline</h2>
+    <!-- Event Timeline & Details -->
+    <div class="section" data-aos="fade-up" data-aos-duration="1000">
+      <h2 style="margin-bottom: 30px; font-size: 2rem;">The Details</h2>
       
-      <div class="details-box" style="text-align: left;">
-        <h3 style="margin-top: 0; font-size: 1.3rem;">Wedding Ceremony</h3>
-        <p style="margin: 5px 0; color: var(--text-dark);"><strong>Sunday, August 30, 2026</strong></p>
-        <p style="margin: 5px 0; color: var(--rose-gold); font-weight: 600;">1:30 PM to 3:00 PM</p>
-        <p style="margin-top: 15px; font-size: 0.9rem;">We warmly welcome your gracious presence.</p>
+      <div class="details-box" style="text-align: left; border-left: 4px solid var(--rose-gold);">
+        <h3 style="margin-top: 0; font-size: 1.4rem;">Wedding Ceremony</h3>
+        <p style="margin: 10px 0; color: var(--text-dark); letter-spacing: 1px;"><strong>Sunday, August 30, 2026</strong></p>
+        <p style="margin: 5px 0; color: var(--rose-gold); font-weight: 600;">1:30 PM — 3:00 PM</p>
       </div>
 
-      <div class="details-box">
-        <h3 style="margin-top: 0; font-size: 1.3rem;">Venue</h3>
-        <p>Groom’s House<br>Kamaraj Nagar, Paramanandal<br>Chengam</p>
-        <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn">View on Google Maps</a>
+      <div class="details-box" style="text-align: left; border-left: 4px solid var(--rose-gold);">
+        <h3 style="margin-top: 0; font-size: 1.4rem;">The Venue</h3>
+        <p style="line-height: 1.6;">Groom’s House<br>Kamaraj Nagar, Paramanandal<br>Chengam</p>
+        <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn">Open Map</a>
       </div>
     </div>
 
-    <!-- 5. Photo Gallery -->
-    <div class="section">
-      <h2 style="margin-bottom: 30px;">Our Memories</h2>
+    <!-- Photo Gallery -->
+    <div class="section" data-aos="zoom-in-up" data-aos-duration="1000">
+      <h2 style="margin-bottom: 30px; font-size: 2rem;">Our Memories</h2>
       <img src="assets/images/photo1.jpg.PNG" class="large-image" alt="Couple Photo 1">
-      <img src="assets/images/photo2.jpg.PNG" class="large-image" alt="Couple Photo 2">
+      <img src="assets/images/photo2.jpg.PNG" class="large-image" alt="Couple Photo 2" style="margin-top: 15px;">
     </div>
 
-    <!-- 6. Countdown & RSVP -->
-    <div class="section">
-      <h2>Counting Down to Forever</h2>
+    <!-- Countdown Section -->
+    <div class="section" data-aos="fade-up" data-aos-duration="1000">
+      <h2 style="font-size: 2rem;">The Countdown</h2>
       <div id="timer">
         <div class="time-block"><span id="days">00</span><small>Days</small></div>
-        <div class="time-block"><span id="hours">00</span><small>Hours</small></div>
-        <div class="time-block"><span id="mins">00</span><small>Mins</small></div>
-        <div class="time-block"><span id="secs">00</span><small>Secs</small></div>
-      </div>
-
-      <div class="details-box" style="margin-top: 30px;">
-        <h2 style="margin-bottom: 20px;">Send a Message</h2>
-        <input type="text" class="rsvp-input" placeholder="Your Name">
-        <input type="text" class="rsvp-input" placeholder="Write your wishes...">
-        <a href="#" class="btn" style="width: 100%; box-sizing: border-box;">Send Message</a>
+        <div class="time-block"><span id="hours">00</span><small>Hrs</small></div>
+        <div class="time-block"><span id="mins">00</span><small>Min</small></div>
+        <div class="time-block"><span id="secs">00</span><small>Sec</small></div>
       </div>
     </div>
 
@@ -301,6 +287,9 @@
   </style>
 
   <script>
+    // Initialize Scroll Animations
+    AOS.init();
+
     // Countdown Timer Logic
     const eventDate = new Date("Aug 30, 2026 13:30:00").getTime();
     setInterval(() => {
@@ -318,12 +307,10 @@
     const canvas = document.getElementById('scratch-canvas');
     const ctx = canvas.getContext('2d');
     
-    // Fill the canvas with a glittery rose-gold color
     ctx.fillStyle = '#b76e79'; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    // Add text over the unscratched area
-    ctx.font = '16px "Playfair Display"';
+    ctx.font = '16px "Montserrat"';
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
     ctx.fillText('Scratch Here', canvas.width / 2, canvas.height / 2 + 5);
