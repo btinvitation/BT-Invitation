@@ -5,61 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bhuvaneshwari & Thyagu | Wedding Invitation</title>
   
-  <!-- Animation Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --rose-gold: #b76e79;
-      --rose-light: #f7e9e9;
-      --bg-color: #fdfbfb;
-      --text-main: #4a4a4a;
-      --text-dark: #2c2c2c;
+      --text-main: #ffffff;
+      --glass-bg: rgba(20, 20, 20, 0.4);
+      --glass-border: rgba(255, 255, 255, 0.2);
     }
 
     body, html {
       margin: 0;
       padding: 0;
-      background-color: var(--bg-color);
+      background-color: #000;
       color: var(--text-main);
       font-family: 'Montserrat', sans-serif;
       overflow-x: hidden;
       scroll-behavior: smooth;
     }
 
-    /* Fixed Background with subtle pulse animation */
-    .bg-wrapper {
+    /* THE MAGIC: Cinematic Video Background */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      z-index: -2;
+      object-fit: cover;
+    }
+
+    /* Dark gradient overlay so the text is easy to read over the video */
+    .video-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh;
-      background-image: url('assets/images/luxury-background.jpg.PNG');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.15;
-      z-index: -2;
-      animation: pulseBg 10s infinite alternate;
-    }
-
-    @keyframes pulseBg {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.05); }
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+      z-index: -1;
     }
 
     .container {
       max-width: 480px; 
       margin: 0 auto;
-      background: transparent;
       padding-bottom: 50px;
     }
 
     .section {
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -71,59 +71,56 @@
 
     h1, h2, h3 {
       font-family: 'Playfair Display', serif;
-      color: var(--rose-gold);
-      font-weight: 600;
+      color: #fff;
+      font-weight: 400;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.5);
     }
 
-    /* Floating Image Effect */
+    .hero-title {
+      font-size: 3.2rem;
+      line-height: 1.2;
+      margin: 20px 0;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose-gold);
+      margin-bottom: 10px;
+    }
+
     .large-image {
       width: 100%;
       height: auto; 
       max-height: 60vh; 
       object-fit: contain; 
-      border-radius: 16px;
-      box-shadow: 0 15px 35px rgba(183, 110, 121, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
       margin-bottom: 20px;
-      border: 4px solid #fff;
+      border: 1px solid var(--glass-border);
     }
 
-    .hero-title {
-      font-size: 3rem;
-      line-height: 1.2;
-      margin: 20px 0;
-      color: var(--text-dark);
-      text-shadow: 2px 2px 10px rgba(183, 110, 121, 0.2);
-    }
-
-    .subtitle {
-      font-size: 0.85rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--rose-gold);
-      margin-bottom: 10px;
-      font-weight: 500;
-    }
-
-    /* Premium Glassmorphism Cards */
+    /* Frosted Glass Effect over the video */
     .details-box {
-      background: rgba(255, 255, 255, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      border-radius: 20px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
       padding: 35px 25px;
       width: 100%;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       margin-bottom: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
     }
 
-    /* HEART SHAPED SCRATCH CARD */
+    /* Heart Scratch Card */
     .scratch-wrapper {
       position: relative;
       width: 250px;
       height: 250px; 
       margin: 0 auto;
-      filter: drop-shadow(0px 10px 15px rgba(183, 110, 121, 0.3));
       -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
       -webkit-mask-size: contain;
       -webkit-mask-repeat: no-repeat;
@@ -144,8 +141,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #fff, #f7e9e9);
-      color: var(--text-dark);
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
       padding: 20px;
       box-sizing: border-box;
       font-family: 'Playfair Display', serif;
@@ -160,10 +159,11 @@
       margin: 30px 0;
     }
     .time-block { 
-      background: #fff;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(10px);
       padding: 15px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.1);
       min-width: 60px;
     }
     .time-block span {
@@ -172,18 +172,11 @@
       color: var(--rose-gold);
       display: block;
     }
-    .time-block small {
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-main);
-    }
 
-    /* Buttons */
     .btn {
       display: inline-block;
       padding: 16px 35px;
-      background: linear-gradient(45deg, #b76e79, #d698a0);
+      background: var(--rose-gold);
       color: #fff;
       border: none;
       border-radius: 30px;
@@ -192,20 +185,18 @@
       letter-spacing: 2px;
       font-size: 0.8rem;
       font-weight: 600;
-      transition: all 0.3s;
       margin-top: 20px;
-      box-shadow: 0 8px 20px rgba(183, 110, 121, 0.4);
-    }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px rgba(183, 110, 121, 0.6);
     }
   </style>
 </head>
 <body>
 
-  <!-- Animated Background Image -->
-  <div class="bg-wrapper"></div>
+  <!-- THE CINEMATIC BACKGROUND VIDEO -->
+  <video autoplay loop muted playsinline id="bg-video">
+    <!-- You will upload a video named background.mp4 to your assets/images folder -->
+    <source src="assets/images/background.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
 
   <div class="container">
     
@@ -213,7 +204,7 @@
     <div class="section" id="cover" data-aos="zoom-in" data-aos-duration="1500">
       <p class="subtitle">We are getting married</p>
       <h1 class="hero-title">Bhuvaneshwari<br><span style="font-size: 1.5rem; color: var(--rose-gold);">&</span><br>Thyagu</h1>
-      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 1px;">AUGUST 30, 2026</p>
+      <p style="margin-top: 15px; font-weight: 500; letter-spacing: 2px;">AUGUST 30, 2026</p>
       <div style="margin-top: 60px; animation: bounce 2s infinite;">
         <p class="subtitle" style="font-size: 0.6rem;">Scroll to begin</p>
         <span style="font-size: 1.5rem; color: var(--rose-gold);">↓</span>
@@ -241,16 +232,14 @@
       </div>
     </div>
 
-    <!-- Event Timeline & Details -->
+    <!-- Details Section -->
     <div class="section" data-aos="fade-up" data-aos-duration="1000">
       <h2 style="margin-bottom: 30px; font-size: 2rem;">The Details</h2>
-      
       <div class="details-box" style="text-align: left; border-left: 4px solid var(--rose-gold);">
         <h3 style="margin-top: 0; font-size: 1.4rem;">Wedding Ceremony</h3>
-        <p style="margin: 10px 0; color: var(--text-dark); letter-spacing: 1px;"><strong>Sunday, August 30, 2026</strong></p>
-        <p style="margin: 5px 0; color: var(--rose-gold); font-weight: 600;">1:30 PM — 3:00 PM</p>
+        <p style="margin: 10px 0;"><strong>Sunday, August 30, 2026</strong></p>
+        <p style="margin: 5px 0; color: var(--rose-gold);">1:30 PM — 3:00 PM</p>
       </div>
-
       <div class="details-box" style="text-align: left; border-left: 4px solid var(--rose-gold);">
         <h3 style="margin-top: 0; font-size: 1.4rem;">The Venue</h3>
         <p style="line-height: 1.6;">Groom’s House<br>Kamaraj Nagar, Paramanandal<br>Chengam</p>
@@ -258,22 +247,11 @@
       </div>
     </div>
 
-    <!-- Photo Gallery -->
+    <!-- Gallery -->
     <div class="section" data-aos="zoom-in-up" data-aos-duration="1000">
       <h2 style="margin-bottom: 30px; font-size: 2rem;">Our Memories</h2>
       <img src="assets/images/photo1.jpg.PNG" class="large-image" alt="Couple Photo 1">
       <img src="assets/images/photo2.jpg.PNG" class="large-image" alt="Couple Photo 2" style="margin-top: 15px;">
-    </div>
-
-    <!-- Countdown Section -->
-    <div class="section" data-aos="fade-up" data-aos-duration="1000">
-      <h2 style="font-size: 2rem;">The Countdown</h2>
-      <div id="timer">
-        <div class="time-block"><span id="days">00</span><small>Days</small></div>
-        <div class="time-block"><span id="hours">00</span><small>Hrs</small></div>
-        <div class="time-block"><span id="mins">00</span><small>Min</small></div>
-        <div class="time-block"><span id="secs">00</span><small>Sec</small></div>
-      </div>
     </div>
 
   </div>
@@ -287,21 +265,7 @@
   </style>
 
   <script>
-    // Initialize Scroll Animations
     AOS.init();
-
-    // Countdown Timer Logic
-    const eventDate = new Date("Aug 30, 2026 13:30:00").getTime();
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = eventDate - now;
-      if(diff > 0) {
-        document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
-      }
-    }, 1000);
 
     // Heart Scratch Canvas Setup
     const canvas = document.getElementById('scratch-canvas');
@@ -309,7 +273,6 @@
     
     ctx.fillStyle = '#b76e79'; 
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
     ctx.font = '16px "Montserrat"';
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
@@ -330,7 +293,6 @@
       ctx.arc(x, y, 22, 0, Math.PI * 2);
       ctx.fill();
     }
-
     canvas.addEventListener('mousedown', () => isDrawing = true);
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mousemove', scratch);
