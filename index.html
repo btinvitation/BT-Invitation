@@ -1,440 +1,346 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wedding Invitation | Bhuvaneshwari & Thyagu</title>
+  
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f3e5ab;
+      --black: #0a0a0a;
+      --dark-card: rgba(20, 20, 20, 0.85);
+    }
 
-    <title>Bhuvaneshwari ❤️ Thyagu | Wedding Reception</title>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: var(--black);
+      /* Luxury Background Image */
+      background-image: url('assets/images/luxury-background.jpg.PNG');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #ffffff;
+      font-family: 'Cinzel', serif, sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+    }
 
-    <meta name="description"
-          content="Wedding Reception Invitation of Bhuvaneshwari and Thyagu">
+    /* Fixed Dark Overlay for text legibility */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
 
-    <meta name="theme-color"
-          content="#000000">
+    .container {
+      width: 100%;
+      max-width: 430px; /* Mobile Viewport */
+      min-height: 100vh;
+      z-index: 2;
+      position: relative;
+      padding: 20px 15px;
+      box-sizing: border-box;
+      text-align: center;
+    }
 
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
+    /* 1. Cinematic Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--black);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+    }
 
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(212, 175, 55, 0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 1s infinite linear;
+    }
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet">
+    @keyframes spin { 100% { transform: rotate(360deg); } }
 
-    <link rel="stylesheet"
-          href="style.css">
+    /* Card Styling */
+    .invitation-card {
+      background: var(--dark-card);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 25px 18px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(5px);
+    }
 
+    /* Primary Invitation Image Card */
+    .hero-card-img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+      margin-bottom: 15px;
+    }
+
+    h1 { color: var(--gold); font-size: 1.8rem; margin: 10px 0; }
+    h2, h3 { color: var(--gold); margin-bottom: 8px; }
+    p { color: #e0e0e0; font-size: 0.95rem; line-height: 1.6; }
+
+    /* Wax Seal Section */
+    .wax-seal-wrapper {
+      cursor: pointer;
+      margin: 20px 0;
+    }
+    .wax-seal-btn {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #b8860b, #8b0000);
+      border-radius: 50%;
+      border: 2px solid var(--gold-light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+      transition: transform 0.3s ease;
+    }
+    .wax-seal-btn:hover { transform: scale(1.1); }
+
+    /* Live Countdown */
+    #timer {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      font-weight: bold;
+      color: var(--gold-light);
+    }
+    .time-block {
+      background: rgba(212, 175, 55, 0.15);
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+      min-width: 55px;
+    }
+
+    /* Interactive Scratch Card */
+    .scratch-container {
+      position: relative;
+      width: 280px;
+      height: 100px;
+      margin: 20px auto;
+    }
+    #scratch-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+    .scratch-secret {
+      width: 100%;
+      height: 100%;
+      background: #111;
+      border: 1px dashed var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-weight: bold;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--gold);
+    }
+
+    /* Buttons */
+    .btn-gold {
+      background: linear-gradient(45deg, #b8860b, #ffd700);
+      color: #000;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- ==========================================
-                LOADER
-=========================================== -->
+  <div class="overlay"></div>
 
-<div id="loader">
+  <!-- 1. Cinematic Loader -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <p style="margin-top: 15px; letter-spacing: 2px;">LOADING INVITATION...</p>
+  </div>
 
-    <div class="loader-bg"></div>
+  <div class="container">
 
-    <div class="loader-content">
-
-        <div class="gold-ring"></div>
-
-        <h2 class="loader-title">
-            Wedding Reception
-        </h2>
-
-        <h1 class="loader-names">
-            Bhuvaneshwari
-            <span>&</span>
-            Thyagu
-        </h1>
-
-        <div class="loading-line">
-            <span></span>
-        </div>
-
+    <!-- 2 & 3. Envelope & Wax Seal -->
+    <div class="invitation-card" id="envelope-card">
+      <p style="letter-spacing: 3px; color: var(--gold);">WE ARE CELEBRATING</p>
+      <h2>Bhuvaneshwari & Thyagu</h2>
+      
+      <div class="wax-seal-wrapper" onclick="openEnvelope()">
+        <div class="wax-seal-btn" id="seal-img">✉️</div>
+        <p style="font-size: 0.85rem; color: var(--gold-light); margin-top: 12px;">TAP TO UNLOCK INVITATION</p>
+      </div>
     </div>
 
-</div>
+    <!-- 4. Main Invitation Card & Details -->
+    <div class="invitation-card" id="main-invitation" style="display: none; opacity: 0;">
+      
+      <!-- Invitation Card Asset Image -->
+      <img src="assets/images/invitation-card.jpg.PNG" alt="Wedding Invitation Card" class="hero-card-img">
 
-<!-- ==========================================
-          FLOATING GOLD PARTICLES
-=========================================== -->
+      <p style="letter-spacing: 2px; color: var(--gold); margin-top: 10px;">CORDIALLY INVITE YOU TO CELEBRATE THE WEDDING OF</p>
+      
+      <h1>Bhuvaneshwari<br><span style="font-size: 1.2rem; color: #fff;">&</span><br>Thyagu</h1>
+      
+      <hr style="border-color: var(--gold); opacity: 0.3; margin: 20px 0;">
 
-<div id="particles"></div>
+      <!-- Event Info -->
+      <p><strong>📅 Date:</strong> Sunday, August 30, 2026</p>
+      <p><strong>⏰ Time:</strong> 1:30 PM – 3:00 PM</p>
+      <p><strong>📍 Venue:</strong> Groom’s House, Kamaraj Nagar, Paramanandal, Chengam</p>
 
-<!-- ==========================================
-          HERO SECTION
-=========================================== -->
+      <!-- 8. Live Countdown -->
+      <h3 style="margin-top: 25px;">Countdown to the Grand Day</h3>
+      <div id="timer">
+        <div class="time-block"><span id="days">00</span><br><small>Days</small></div>
+        <div class="time-block"><span id="hours">00</span><br><small>Hours</small></div>
+        <div class="time-block"><span id="mins">00</span><br><small>Mins</small></div>
+        <div class="time-block"><span id="secs">00</span><br><small>Secs</small></div>
+      </div>
 
-<section id="hero">
-
-    <div class="hero-overlay"></div>
-
-    <img src="assets/images/luxury-background.jpg.PNG"
-         class="hero-bg"
-         alt="Luxury Background">
-
-    <div class="hero-content">
-
-        <p class="welcome">
-            Together With Their Families
-        </p>
-
-        <h1>
-            Bhuvaneshwari
-        </h1>
-
-        <div class="heart">
-            ❤
-        </div>
-
-        <h1>
-            Thyagu
-        </h1>
-
-        <p class="invite-text">
-            Request the honour of your gracious presence
-            at their Wedding Reception
-        </p>
-
-        <a href="#envelope"
-           class="gold-btn">
-            Open Invitation
-        </a>
-
+      <!-- 11. Custom Google Maps Button -->
+      <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn-gold">
+        📍 Get Directions on Google Maps
+      </a>
     </div>
 
-</section>
-
-<!-- ==========================================
-           3D ENVELOPE
-=========================================== -->
-
-<section id="envelope">
-
-    <div class="envelope-scene">
-
-        <div class="envelope">
-
-            <div class="envelope-back"></div>
-
-            <div class="envelope-letter">
-
-                <img src="assets/images/invitation-card.jpg.PNG"
-                     alt="Invitation">
-
-            </div>
-
-            <div class="envelope-front"></div>
-
-            <div id="waxSeal">
-
-                <div class="seal-center">
-                    OPEN
-                </div>
-
-            </div>
-
-            <div class="envelope-flap"></div>
-
+    <!-- 9. Scratch to Reveal Section -->
+    <div class="invitation-card">
+      <h3>✨ Scratch to Reveal Secret Blessing</h3>
+      <div class="scratch-container">
+        <div class="scratch-secret">
+          Your presence & blessings mean the world to us! ✨
         </div>
-
+        <canvas id="scratch-canvas" width="280" height="100"></canvas>
+      </div>
     </div>
 
-    <div class="tap-text">
-        Tap the wax seal
+    <!-- 10. Photo Gallery Section -->
+    <div class="invitation-card">
+      <h3>📷 Photo Gallery</h3>
+      <div class="gallery-grid">
+        <img src="assets/images/photo1.jpg.PNG" alt="Gallery Photo 1">
+        <img src="assets/images/photo2.jpg.PNG" alt="Gallery Photo 2">
+      </div>
     </div>
 
-</section>
-
-<!-- ==========================================
-          INVITATION DETAILS
-=========================================== -->
-
-<section id="invitation">
-
-    <div class="card">
-
-        <h4>
-            Wedding Reception
-        </h4>
-
-        <h2>
-            Bhuvaneshwari
-        </h2>
-
-        <div class="love-icon">
-            ❤
-        </div>
-
-        <h2>
-            Thyagu
-        </h2>
-
-        <div class="divider"></div>
-
-                <div class="event-details">
-
-            <div class="detail-box">
-
-                <h5>Date</h5>
-
-                <p>30 August 2026</p>
-
-            </div>
-
-            <div class="detail-box">
-
-                <h5>Time</h5>
-
-                <p>1:30 PM – 3:00 PM</p>
-
-            </div>
-
-        </div>
-
-        <div class="venue-box">
-
-            <h3>Venue</h3>
-
-            <p>
-                Groom's House<br>
-                Kamaraj Nagar<br>
-                Paramanandal<br>
-                Chengam
-            </p>
-
-            <a href="https://maps.app.goo.gl/id7RM8Ct27Ut5QLq9?g_st=ic"
-               target="_blank"
-               class="gold-btn">
-
-                View Location
-
-            </a>
-
-        </div>
-
+    <!-- 12. Thank You Page Section -->
+    <div class="invitation-card">
+      <h2>💖 Thank You!</h2>
+      <p>We look forward to hosting you on August 30th!</p>
     </div>
 
-</section>
-
-<!-- ==========================================
-              COUNTDOWN
-=========================================== -->
-
-<section id="countdown">
-
-    <div class="section-title">
-
-        <h2>Countdown to Celebration</h2>
-
-        <p>Every moment brings us closer to the special day.</p>
-
-    </div>
-
-    <div class="countdown-container">
-
-        <div class="time-box">
-
-            <span id="days">00</span>
-
-            <small>Days</small>
-
-        </div>
-
-        <div class="time-box">
-
-            <span id="hours">00</span>
-
-            <small>Hours</small>
-
-        </div>
-
-        <div class="time-box">
-
-            <span id="minutes">00</span>
-
-            <small>Minutes</small>
-
-        </div>
-
-        <div class="time-box">
-
-            <span id="seconds">00</span>
-
-            <small>Seconds</small>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-              STORY SECTION
-=========================================== -->
-
-<section id="story">
-
-    <div class="story-wrapper">
-
-        <div class="story-image">
-
-            <img src="assets/images/photo1.jpg.PNG"
-                 alt="Bride and Groom">
-
-        </div>
-
-        <div class="story-content">
-
-            <h2>Our Story</h2>
-
-            <p>
-
-                Every beautiful journey begins with a single step.
-                Ours became a story of friendship, trust,
-                laughter and unconditional love.
-
-            </p>
-
-            <p>
-
-                With the blessings of our families,
-                we warmly invite you to celebrate
-                this joyful occasion and become
-                a cherished part of our memories.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-            SCRATCH TO REVEAL
-========================================== -->
-
-<section id="scratch-section">
-
-    <div class="section-title">
-
-        <h2>Special Surprise</h2>
-
-        <p>Scratch below to reveal our message.</p>
-
-    </div>
-
-    <div class="scratch-container">
-
-        <div class="scratch-message">
-
-            ❤️ We are excited to celebrate this beautiful
-            occasion with you. Your presence and blessings
-            will make our day truly unforgettable. ❤️
-
-        </div>
-
-        <canvas id="scratchCanvas"></canvas>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-                 GALLERY
-========================================== -->
-
-<section id="gallery">
-
-    <div class="section-title">
-
-        <h2>Our Memories</h2>
-
-        <p>Moments captured with love.</p>
-
-    </div>
-
-    <div class="gallery-grid">
-
-        <div class="gallery-item">
-
-            <img src="assets/images/photo1.jpg.PNG"
-                 alt="Photo 1">
-
-        </div>
-
-        <div class="gallery-item">
-
-            <img src="assets/images/photo2.jpg.PNG"
-                 alt="Photo 2">
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-              THANK YOU
-========================================== -->
-
-<section id="thankyou">
-
-    <div class="thankyou-card">
-
-        <h2>Thank You</h2>
-
-        <p>
-
-            Your love, blessings and presence
-            are the greatest gifts we could ever receive.
-
-        </p>
-
-        <h3>
-
-            We look forward to celebrating with you!
-
-        </h3>
-
-        <h1>
-
-            Bhuvaneshwari ❤️ Thyagu
-
-        </h1>
-
-    </div>
-
-</section>
-
-<!-- ==========================================
-                 FOOTER
-========================================== -->
-
-<footer>
-
-    <p>
-
-        Designed with ❤️ for our Wedding Reception
-
-    </p>
-
-</footer>
-
-<!-- ==========================================
-             JAVASCRIPT
-========================================== -->
-
-<script src="script.js"></script>
-
+  </div>
+
+  <script>
+    // 1. Hide Loader on Load
+    window.addEventListener('load', () => {
+      gsap.to("#loader", { opacity: 0, duration: 0.8, onComplete: () => {
+        document.getElementById("loader").style.display = "none";
+      }});
+    });
+
+    // 3. Wax Seal Click / Reveal Animation
+    function openEnvelope() {
+      gsap.to("#envelope-card", { scale: 0.9, opacity: 0, duration: 0.5, onComplete: () => {
+        document.getElementById("envelope-card").style.display = "none";
+        const mainCard = document.getElementById("main-invitation");
+        mainCard.style.display = "block";
+        gsap.to(mainCard, { opacity: 1, y: 0, duration: 1 });
+      }});
+    }
+
+    // 8. Countdown Timer Logic (Aug 30, 2026 13:30 IST)
+    const eventDate = new Date("Aug 30, 2026 13:30:00").getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if(diff > 0) {
+        document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+      }
+    }, 1000);
+
+    // 9. Scratch Canvas Setup
+    const canvas = document.getElementById('scratch-canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#b8860b';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.font = '14px serif';
+    ctx.fillStyle = '#000';
+    ctx.textAlign = 'center';
+    ctx.fillText('Scratch Here with Finger/Mouse', canvas.width / 2, canvas.height / 2 + 5);
+    
+    let isDrawing = false;
+    function scratch(e) {
+      if (!isDrawing) return;
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+      
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, 18, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    canvas.addEventListener('mousedown', () => isDrawing = true);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mousemove', scratch);
+    canvas.addEventListener('touchstart', () => isDrawing = true);
+    canvas.addEventListener('touchend', () => isDrawing = false);
+    canvas.addEventListener('touchmove', scratch);
+  </script>
 </body>
-
-</html>    
+</html>
