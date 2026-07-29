@@ -12,7 +12,6 @@
 
   <style>
     :root {
-      --rose-gold: #d4af37; /* Upgraded to a richer gold to match the dark background */
       --gold: #d4af37;
       --text-main: #e0e0e0;
       --text-dark: #ffffff;
@@ -28,7 +27,28 @@
       scroll-behavior: smooth;
     }
 
-    /* 1. THE INTERACTIVE COVER SCREEN */
+    /* 1. THE PERMANENT BACKGROUND IMAGE */
+    .global-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-image: url('assets/images/luxury-background.jpg.PNG');
+      background-size: cover;
+      background-position: center;
+      z-index: 1; /* Fixed layer issue - now it will definitely show */
+    }
+
+    /* Dark overlay so the text remains readable */
+    .global-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5); /* Slightly lighter to show background more */
+      z-index: 2;
+    }
+
+    /* 2. THE INTERACTIVE COVER SCREEN */
     #welcome-cover {
       position: fixed;
       inset: 0;
@@ -40,30 +60,9 @@
       text-align: center;
     }
 
-    /* 2. THE PERMANENT BACKGROUND IMAGE FOR THE WHOLE SCREEN */
-    .global-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      background-image: url('assets/images/luxury-background.jpg.PNG');
-      background-size: cover;
-      background-position: center;
-      z-index: -3; /* Stays at the very back */
-    }
-
-    /* Dark overlay so the text pops and remains readable */
-    .global-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.65);
-      z-index: -2;
-    }
-
     .cover-content {
       position: relative;
-      z-index: 2;
+      z-index: 10;
       padding: 20px;
     }
 
@@ -102,11 +101,10 @@
       max-width: 480px; 
       margin: 0 auto;
       padding-bottom: 50px;
-      /* Hidden initially until cover opens */
       opacity: 0; 
       visibility: hidden;
       position: relative;
-      z-index: 1;
+      z-index: 10; /* Ensures content sits above the background and overlay */
     }
 
     .section {
@@ -155,13 +153,13 @@
     }
 
     .details-box {
-      background: rgba(20, 20, 20, 0.7);
+      background: rgba(20, 20, 20, 0.6); /* Slightly more transparent */
       border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 20px;
       padding: 35px 25px;
       width: 100%;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       margin-bottom: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
@@ -219,7 +217,7 @@
 </head>
 <body>
 
-  <!-- GLOBAL BACKGROUND IMAGE & OVERLAY (Stays visible the whole time) -->
+  <!-- GLOBAL BACKGROUND IMAGE & OVERLAY -->
   <div class="global-bg"></div>
   <div class="global-overlay"></div>
 
