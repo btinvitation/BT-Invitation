@@ -3,304 +3,293 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wedding Invitation | Bhuvaneshwari & Thyagu</title>
+  <title>Bhuvaneshwari & Thyagu | Wedding Invitation</title>
   
   <!-- GSAP Animation Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <!-- Elegant Google Fonts like the video -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --gold: #d4af37;
-      --gold-light: #f3e5ab;
-      --black: #0a0a0a;
-      --dark-card: rgba(20, 20, 20, 0.85);
+      --gold-light: #f9f5e8;
+      --bg-color: #1a1515;
+      --text-main: #f0e6d2;
     }
 
-    body {
+    body, html {
       margin: 0;
       padding: 0;
-      background-color: var(--black);
-      /* Luxury Background Image */
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: 'Montserrat', sans-serif;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3, .fancy-font {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    /* Full-screen background wrapper */
+    .bg-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
       background-image: url('assets/images/luxury-background.jpg.PNG');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed;
-      color: #ffffff;
-      font-family: 'Cinzel', serif, sans-serif;
-      overflow-x: hidden;
-      display: flex;
-      justify-content: center;
+      z-index: -2;
     }
 
-    /* Fixed Dark Overlay for text legibility */
     .overlay {
       position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(26,21,21,0.95));
+      z-index: -1;
     }
 
     .container {
-      width: 100%;
-      max-width: 430px; /* Mobile Viewport */
-      min-height: 100vh;
-      z-index: 2;
-      position: relative;
-      padding: 20px 15px;
-      box-sizing: border-box;
-      text-align: center;
+      max-width: 480px; /* Mobile focused */
+      margin: 0 auto;
+      background: transparent;
     }
 
-    /* 1. Cinematic Loader */
-    #loader {
-      position: fixed;
-      inset: 0;
-      background: var(--black);
-      z-index: 999;
+    /* Section Styling */
+    .section {
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      color: var(--gold);
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+      box-sizing: border-box;
     }
 
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 3px solid rgba(212, 175, 55, 0.2);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 1s infinite linear;
-    }
-
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-
-    /* Card Styling */
-    .invitation-card {
-      background: var(--dark-card);
-      border: 1px solid var(--gold);
-      border-radius: 12px;
-      padding: 25px 18px;
-      margin-bottom: 25px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(5px);
-    }
-
-    /* Primary Invitation Image Card */
-    .hero-card-img {
+    /* FIXING THE IMAGE SIZES */
+    .large-image {
       width: 100%;
-      border-radius: 8px;
-      border: 1px solid var(--gold);
-      margin-bottom: 15px;
+      height: auto; /* Lets the image show fully without cropping */
+      max-height: 60vh; /* Prevents it from being too massive */
+      object-fit: contain; /* Keeps the whole image visible */
+      border-radius: 12px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
     }
 
-    h1 { color: var(--gold); font-size: 1.8rem; margin: 10px 0; }
-    h2, h3 { color: var(--gold); margin-bottom: 8px; }
-    p { color: #e0e0e0; font-size: 0.95rem; line-height: 1.6; }
-
-    /* Wax Seal Section */
-    .wax-seal-wrapper {
-      cursor: pointer;
+    .hero-title {
+      font-size: 2.8rem;
+      line-height: 1.2;
       margin: 20px 0;
     }
-    .wax-seal-btn {
-      width: 80px;
-      height: 80px;
-      background: radial-gradient(circle, #b8860b, #8b0000);
-      border-radius: 50%;
-      border: 2px solid var(--gold-light);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-      transition: transform 0.3s ease;
-    }
-    .wax-seal-btn:hover { transform: scale(1.1); }
 
-    /* Live Countdown */
+    .subtitle {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+    }
+
+    /* Timeline & Details */
+    .details-box {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      border-radius: 16px;
+      padding: 30px 20px;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      margin-bottom: 20px;
+    }
+
+    /* Timer */
     #timer {
       display: flex;
-      justify-content: space-around;
-      margin: 20px 0;
-      font-weight: bold;
-      color: var(--gold-light);
+      justify-content: center;
+      gap: 15px;
+      margin: 30px 0;
     }
     .time-block {
-      background: rgba(212, 175, 55, 0.15);
-      padding: 10px 12px;
-      border-radius: 8px;
-      border: 1px solid var(--gold);
-      min-width: 55px;
+      text-align: center;
+    }
+    .time-block span {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+    }
+    .time-block small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    /* Interactive Scratch Card */
-    .scratch-container {
+    /* Scratch Canvas */
+    .scratch-wrapper {
       position: relative;
       width: 280px;
-      height: 100px;
-      margin: 20px auto;
+      height: 200px;
+      margin: 0 auto;
     }
     #scratch-canvas {
       position: absolute;
       top: 0;
       left: 0;
+      border-radius: 12px;
       cursor: pointer;
-      border-radius: 8px;
     }
-    .scratch-secret {
+    .scratch-content {
       width: 100%;
       height: 100%;
-      background: #111;
-      border: 1px dashed var(--gold);
-      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--gold-light);
-      font-weight: bold;
-      padding: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px dashed var(--gold);
+      border-radius: 12px;
+      padding: 20px;
       box-sizing: border-box;
-    }
-
-    /* Gallery Grid */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 15px;
-    }
-    .gallery-grid img {
-      width: 100%;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 1px solid var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
     }
 
     /* Buttons */
-    .btn-gold {
-      background: linear-gradient(45deg, #b8860b, #ffd700);
-      color: #000;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 25px;
-      font-weight: bold;
-      text-decoration: none;
+    .btn {
       display: inline-block;
-      margin-top: 15px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      padding: 15px 30px;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      border-radius: 30px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* RSVP Form */
+    .rsvp-input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      box-sizing: border-box;
+    }
+    .rsvp-input:focus {
+      outline: none;
+      border-bottom: 1px solid var(--gold);
     }
   </style>
 </head>
 <body>
 
+  <div class="bg-wrapper"></div>
   <div class="overlay"></div>
 
-  <!-- 1. Cinematic Loader -->
-  <div id="loader">
-    <div class="spinner"></div>
-    <p style="margin-top: 15px; letter-spacing: 2px;">LOADING INVITATION...</p>
-  </div>
-
   <div class="container">
-
-    <!-- 2 & 3. Envelope & Wax Seal -->
-    <div class="invitation-card" id="envelope-card">
-      <p style="letter-spacing: 3px; color: var(--gold);">WE ARE CELEBRATING</p>
-      <h2>Bhuvaneshwari & Thyagu</h2>
-      
-      <div class="wax-seal-wrapper" onclick="openEnvelope()">
-        <div class="wax-seal-btn" id="seal-img">✉️</div>
-        <p style="font-size: 0.85rem; color: var(--gold-light); margin-top: 12px;">TAP TO UNLOCK INVITATION</p>
+    
+    <!-- 1. Cover Section -->
+    <div class="section" id="cover">
+      <p class="subtitle">We are getting married</p>
+      <h1 class="hero-title">Bhuvaneshwari<br>&<br>Thyagu</h1>
+      <p style="margin-top: 20px;">August 30, 2026</p>
+      <div style="margin-top: 50px;">
+        <p class="subtitle" style="font-size: 0.7rem;">Scroll to open</p>
+        <span style="font-size: 2rem; color: var(--gold);">⌄</span>
       </div>
     </div>
 
-    <!-- 4. Main Invitation Card & Details -->
-    <div class="invitation-card" id="main-invitation" style="display: none; opacity: 0;">
-      
-      <!-- Invitation Card Asset Image -->
-      <img src="assets/images/invitation-card.jpg.PNG" alt="Wedding Invitation Card" class="hero-card-img">
-
-      <p style="letter-spacing: 2px; color: var(--gold); margin-top: 10px;">CORDIALLY INVITE YOU TO CELEBRATE THE WEDDING OF</p>
-      
-      <h1>Bhuvaneshwari<br><span style="font-size: 1.2rem; color: #fff;">&</span><br>Thyagu</h1>
-      
-      <hr style="border-color: var(--gold); opacity: 0.3; margin: 20px 0;">
-
-      <!-- Event Info -->
-      <p><strong>📅 Date:</strong> Sunday, August 30, 2026</p>
-      <p><strong>⏰ Time:</strong> 1:30 PM – 3:00 PM</p>
-      <p><strong>📍 Venue:</strong> Groom’s House, Kamaraj Nagar, Paramanandal, Chengam</p>
-
-      <!-- 8. Live Countdown -->
-      <h3 style="margin-top: 25px;">Countdown to the Grand Day</h3>
-      <div id="timer">
-        <div class="time-block"><span id="days">00</span><br><small>Days</small></div>
-        <div class="time-block"><span id="hours">00</span><br><small>Hours</small></div>
-        <div class="time-block"><span id="mins">00</span><br><small>Mins</small></div>
-        <div class="time-block"><span id="secs">00</span><br><small>Secs</small></div>
+    <!-- 2. Invitation Section (FIXED IMAGE SIZES) -->
+    <div class="section">
+      <img src="assets/images/invitation-card.jpg.PNG" class="large-image" alt="Invitation Card">
+      <div class="details-box">
+        <h2 style="font-size: 1.5rem;">You are Invited!</h2>
+        <p>We are honored to welcome you to our wedding ceremony as we begin our journey together in faith and love.</p>
       </div>
-
-      <!-- 11. Custom Google Maps Button -->
-      <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn-gold">
-        📍 Get Directions on Google Maps
-      </a>
     </div>
 
-    <!-- 9. Scratch to Reveal Section -->
-    <div class="invitation-card">
-      <h3>✨ Scratch to Reveal Secret Blessing</h3>
-      <div class="scratch-container">
-        <div class="scratch-secret">
-          Your presence & blessings mean the world to us! ✨
+    <!-- 3. Scratch to Reveal Section -->
+    <div class="section">
+      <h2 style="margin-bottom: 30px;">Scratch to Reveal</h2>
+      <div class="scratch-wrapper">
+        <div class="scratch-content">
+          You're Invited!<br>August 30, 2026
         </div>
-        <canvas id="scratch-canvas" width="280" height="100"></canvas>
+        <canvas id="scratch-canvas" width="280" height="200"></canvas>
       </div>
     </div>
 
-    <!-- 10. Photo Gallery Section -->
-    <div class="invitation-card">
-      <h3>📷 Photo Gallery</h3>
-      <div class="gallery-grid">
-        <img src="assets/images/photo1.jpg.PNG" alt="Gallery Photo 1">
-        <img src="assets/images/photo2.jpg.PNG" alt="Gallery Photo 2">
+    <!-- 4. Event Timeline & Details -->
+    <div class="section">
+      <h2 style="margin-bottom: 30px;">Program Timeline</h2>
+      
+      <div class="details-box" style="text-align: left;">
+        <h3 style="margin-top: 0; font-size: 1.3rem;">Wedding Ceremony</h3>
+        <p style="margin: 5px 0;"><strong>Sunday, August 30, 2026</strong></p>
+        <p style="margin: 5px 0; color: var(--gold-light);">1:30 PM to 3:00 PM</p>
+        <p style="margin-top: 15px; font-size: 0.9rem;">We warmly welcome your gracious presence.</p>
+      </div>
+
+      <div class="details-box">
+        <h3 style="margin-top: 0; font-size: 1.3rem;">Venue</h3>
+        <p>Groom’s House<br>Kamaraj Nagar, Paramanandal<br>Chengam</p>
+        <a href="https://maps.app.goo.gl/mPHSN5Qt6RtdwrfE6?g_st=ic" target="_blank" class="btn">View on Google Maps</a>
       </div>
     </div>
 
-    <!-- 12. Thank You Page Section -->
-    <div class="invitation-card">
-      <h2>💖 Thank You!</h2>
-      <p>We look forward to hosting you on August 30th!</p>
+    <!-- 5. Photo Gallery (FIXED IMAGE SIZES) -->
+    <div class="section">
+      <h2 style="margin-bottom: 30px;">Our Memories</h2>
+      <img src="assets/images/photo1.jpg.PNG" class="large-image" alt="Couple Photo 1">
+      <img src="assets/images/photo2.jpg.PNG" class="large-image" alt="Couple Photo 2">
+    </div>
+
+    <!-- 6. Countdown & RSVP -->
+    <div class="section">
+      <h2>Counting Down to Forever</h2>
+      <div id="timer">
+        <div class="time-block"><span id="days">00</span><small>Days</small></div>
+        <div class="time-block"><span id="hours">00</span><small>Hours</small></div>
+        <div class="time-block"><span id="mins">00</span><small>Mins</small></div>
+        <div class="time-block"><span id="secs">00</span><small>Secs</small></div>
+      </div>
+
+      <div class="details-box" style="margin-top: 30px;">
+        <h2 style="margin-bottom: 20px;">Send a Message</h2>
+        <input type="text" class="rsvp-input" placeholder="Your Name">
+        <input type="text" class="rsvp-input" placeholder="Write your wishes...">
+        <a href="#" class="btn" style="width: 100%; box-sizing: border-box;">Send Message</a>
+      </div>
     </div>
 
   </div>
 
   <script>
-    // 1. Hide Loader on Load
-    window.addEventListener('load', () => {
-      gsap.to("#loader", { opacity: 0, duration: 0.8, onComplete: () => {
-        document.getElementById("loader").style.display = "none";
-      }});
-    });
-
-    // 3. Wax Seal Click / Reveal Animation
-    function openEnvelope() {
-      gsap.to("#envelope-card", { scale: 0.9, opacity: 0, duration: 0.5, onComplete: () => {
-        document.getElementById("envelope-card").style.display = "none";
-        const mainCard = document.getElementById("main-invitation");
-        mainCard.style.display = "block";
-        gsap.to(mainCard, { opacity: 1, y: 0, duration: 1 });
-      }});
-    }
-
-    // 8. Countdown Timer Logic (Aug 30, 2026 13:30 IST)
+    // Countdown Timer Logic
     const eventDate = new Date("Aug 30, 2026 13:30:00").getTime();
     setInterval(() => {
       const now = new Date().getTime();
       const diff = eventDate - now;
-
       if(diff > 0) {
         document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
         document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -309,20 +298,22 @@
       }
     }, 1000);
 
-    // 9. Scratch Canvas Setup
+    // Scratch Canvas Setup (Updated size)
     const canvas = document.getElementById('scratch-canvas');
     const ctx = canvas.getContext('2d');
-    ctx.fillStyle = '#b8860b';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
     
-    ctx.font = '14px serif';
-    ctx.fillStyle = '#000';
+    // Create a beautiful rose-gold/pinkish fill for the scratcher like the video
+    ctx.fillStyle = '#c79c9c';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '16px "Playfair Display"';
+    ctx.fillStyle = '#fff';
     ctx.textAlign = 'center';
-    ctx.fillText('Scratch Here with Finger/Mouse', canvas.width / 2, canvas.height / 2 + 5);
+    ctx.fillText('Scratch Here', canvas.width / 2, canvas.height / 2 + 5);
     
     let isDrawing = false;
     function scratch(e) {
       if (!isDrawing) return;
+      e.preventDefault(); // Stop scrolling while scratching
       const rect = canvas.getBoundingClientRect();
       const clientX = e.touches ? e.touches[0].clientX : e.clientX;
       const clientY = e.touches ? e.touches[0].clientY : e.clientY;
@@ -331,16 +322,16 @@
       
       ctx.globalCompositeOperation = 'destination-out';
       ctx.beginPath();
-      ctx.arc(x, y, 18, 0, Math.PI * 2);
+      ctx.arc(x, y, 25, 0, Math.PI * 2);
       ctx.fill();
     }
 
     canvas.addEventListener('mousedown', () => isDrawing = true);
     canvas.addEventListener('mouseup', () => isDrawing = false);
     canvas.addEventListener('mousemove', scratch);
-    canvas.addEventListener('touchstart', () => isDrawing = true);
+    canvas.addEventListener('touchstart', (e) => { isDrawing = true; e.preventDefault(); }, {passive: false});
     canvas.addEventListener('touchend', () => isDrawing = false);
-    canvas.addEventListener('touchmove', scratch);
+    canvas.addEventListener('touchmove', scratch, {passive: false});
   </script>
 </body>
 </html>
